@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   I18nManager,
   Image,
@@ -20,11 +20,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Swiper from 'react-native-swiper';
 
 // import components
-import {Heading5, Paragraph} from '../../components/text/CustomText';
+import { Heading5, Paragraph } from '../../components/text/CustomText';
 import TouchableItem from '../../components/TouchableItem';
 
 // import colors
 import Colors from '../../theme/colors';
+//import fontfamily
+import FontFamily from '../../theme/FontFamily';
 
 // OnboardingA Config
 const isRTL = I18nManager.isRTL;
@@ -89,16 +91,19 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     color: Colors.primaryText,
     textAlign: 'center',
+    fontSize: 20,
+    fontFamily: FontFamily.SemiBold,
   },
   descriptionContainer: {
-    paddingVertical: 16,
-    paddingHorizontal: 20,
+    paddingVertical: 10,
+    //  paddingHorizontal: 15,
   },
   descriptionText: {
     fontSize: 15,
     lineHeight: 23,
     color: Colors.secondaryText,
     textAlign: 'center',
+    fontFamily: FontFamily.Regular
   },
   row: {
     flexDirection: 'row',
@@ -139,9 +144,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontWeight: '700',
+    //fontWeight: '700',
     fontSize: 14,
-    color: Colors.accentColor,
+    color: Colors.lightBackGroundText,
+    fontFamily: FontFamily.SemiBold
   },
   dot: {
     margin: 4,
@@ -190,12 +196,12 @@ export default class OnboardingA extends Component {
   };
 
   navigateTo = (screen) => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   render() {
-    const {activeIndex} = this.state;
+    const { activeIndex } = this.state;
 
     return (
       <SafeAreaView style={styles.screenContainer}>
@@ -237,18 +243,18 @@ export default class OnboardingA extends Component {
                   <Icon
                     name={isRTL ? 'chevron-right' : 'chevron-left'}
                     size={24}
-                    color={Colors.accentColor}
+                    color={Colors.lightBackGroundText}
                   />
                   <Text style={styles.buttonText}>{'back'.toUpperCase()}</Text>
                 </View>
               </TouchableItem>
             ) : (
-              <TouchableItem onPress={this.navigateTo('Welcome')}>
-                <View style={styles.actionButton}>
-                  <Text style={styles.buttonText}>{'skip'.toUpperCase()}</Text>
-                </View>
-              </TouchableItem>
-            )}
+                <TouchableItem onPress={this.navigateTo('Welcome')}>
+                  <View style={styles.actionButton}>
+                    <Text style={styles.buttonText}>{'skip'.toUpperCase()}</Text>
+                  </View>
+                </TouchableItem>
+              )}
           </View>
 
           <View style={styles.row}>
@@ -274,17 +280,17 @@ export default class OnboardingA extends Component {
                   <Icon
                     name={isRTL ? 'chevron-left' : 'chevron-right'}
                     size={24}
-                    color={Colors.accentColor}
+                    color={Colors.lightBackGroundText}
                   />
                 </View>
               </TouchableItem>
             ) : (
-              <TouchableItem onPress={this.navigateTo('Welcome')}>
-                <View style={styles.actionButton}>
-                  <Text style={styles.buttonText}>{'done'.toUpperCase()}</Text>
-                </View>
-              </TouchableItem>
-            )}
+                <TouchableItem onPress={this.navigateTo('Welcome')}>
+                  <View style={styles.actionButton}>
+                    <Text style={styles.buttonText}>{'done'.toUpperCase()}</Text>
+                  </View>
+                </TouchableItem>
+              )}
           </View>
         </View>
       </SafeAreaView>

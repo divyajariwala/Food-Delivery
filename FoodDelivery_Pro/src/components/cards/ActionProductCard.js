@@ -6,20 +6,21 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
-import {Image, Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Image, Platform, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 
 // import utils
 import getImgSource from '../../utils/getImgSource.js';
 
 // import components
-import {ButtonText} from '../text/CustomText';
+import { ButtonText } from '../text/CustomText';
 import TouchableItem from '../TouchableItem';
 
 // import colors, layout
 import Colors from '../../theme/colors';
 import Layout from '../../theme/layout';
+import FontFamily from '../../theme/FontFamily';
 
 // ActionProductCard Config
 const IOS = Platform.OS === 'ios';
@@ -53,11 +54,12 @@ const styles = StyleSheet.create({
     height: 52,
   },
   title: {
-    fontWeight: '500',
+    //fontWeight: '500',
     fontSize: 16,
     color: Colors.primaryText,
     letterSpacing: 0.15,
-    textAlign: 'left',
+    // textAlign: 'left',
+    fontFamily: FontFamily.SemiBold
   },
   productFooter: {
     flexDirection: 'row',
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
   },
-  oldPriceContainer: {marginLeft: 5, paddingTop: 2},
+  oldPriceContainer: { marginLeft: 5, paddingTop: 2 },
   oldPrice: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 18,
     color: Colors.orangeLight,
+    fontFamily: FontFamily.SemiBold
   },
   actionContainer: {
     borderBottomLeftRadius: 4,
@@ -188,7 +191,7 @@ export default class ActionProductCard extends Component<Props, State> {
   }
 
   onPressAdd = () => {
-    const {quantity} = this.state;
+    const { quantity } = this.state;
     const newQuantity = quantity + 1;
 
     this.setState({
@@ -197,7 +200,7 @@ export default class ActionProductCard extends Component<Props, State> {
   };
 
   onPressRemove = () => {
-    const {quantity} = this.state;
+    const { quantity } = this.state;
     const newQuantity = quantity - 1;
 
     this.setState({
@@ -235,7 +238,7 @@ export default class ActionProductCard extends Component<Props, State> {
       label,
     } = this.props;
 
-    const {quantity} = this.state;
+    const { quantity } = this.state;
 
     return (
       <View style={styles.container}>
@@ -273,10 +276,10 @@ export default class ActionProductCard extends Component<Props, State> {
                   </View>
                 </View>
               ) : (
-                <View style={styles.productFooter}>
-                  <Text style={styles.price}>{`$ ${price.toFixed(2)}`}</Text>
-                </View>
-              )}
+                  <View style={styles.productFooter}>
+                    <Text style={styles.price}>{`$ ${price.toFixed(2)}`}</Text>
+                  </View>
+                )}
 
               {this.renderLabel(label, discountPercentage)}
             </View>
@@ -303,30 +306,30 @@ export default class ActionProductCard extends Component<Props, State> {
               </View>
             </TouchableItem>
           ) : (
-            <View style={styles.action}>
-              <TouchableItem onPress={this.onPressRemove} borderless>
-                <View style={styles.iconContainer}>
-                  <Icon
-                    name={MINUS_ICON}
-                    size={20}
-                    color={Colors.onPrimaryColor}
-                  />
-                </View>
-              </TouchableItem>
+              <View style={styles.action}>
+                <TouchableItem onPress={this.onPressRemove} borderless>
+                  <View style={styles.iconContainer}>
+                    <Icon
+                      name={MINUS_ICON}
+                      size={20}
+                      color={Colors.onPrimaryColor}
+                    />
+                  </View>
+                </TouchableItem>
 
-              <Text style={styles.quantity}>{quantity}</Text>
+                <Text style={styles.quantity}>{quantity}</Text>
 
-              <TouchableItem onPress={this.onPressAdd} borderless>
-                <View style={styles.iconContainer}>
-                  <Icon
-                    name={PLUS_ICON}
-                    size={20}
-                    color={Colors.onPrimaryColor}
-                  />
-                </View>
-              </TouchableItem>
-            </View>
-          )}
+                <TouchableItem onPress={this.onPressAdd} borderless>
+                  <View style={styles.iconContainer}>
+                    <Icon
+                      name={PLUS_ICON}
+                      size={20}
+                      color={Colors.onPrimaryColor}
+                    />
+                  </View>
+                </TouchableItem>
+              </View>
+            )}
         </View>
       </View>
     );

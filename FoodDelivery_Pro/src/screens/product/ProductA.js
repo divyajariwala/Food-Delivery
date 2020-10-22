@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   I18nManager,
   Image,
@@ -25,7 +25,7 @@ import getImgSource from '../../utils/getImgSource.js';
 
 // import components
 import Button from '../../components/buttons/Button';
-import {Caption, Heading5, SmallText} from '../../components/text/CustomText';
+import { Caption, Heading5, SmallText } from '../../components/text/CustomText';
 import Icon from '../../components/icon/Icon';
 import SizePicker from '../../components/pickers/SizePicker';
 import TouchableItem from '../../components/TouchableItem';
@@ -33,7 +33,7 @@ import TouchableItem from '../../components/TouchableItem';
 // import colors
 import Colors from '../../theme/colors';
 import Color from 'color';
-
+import FontFamily from '../../theme/FontFamily';
 // ProductA Config
 const isRTL = I18nManager.isRTL;
 const IOS = Platform.OS === 'ios';
@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
   },
   paginationStyle: {
     bottom: 12,
-    transform: [{scaleX: isRTL ? -1 : 1}],
+    transform: [{ scaleX: isRTL ? -1 : 1 }],
   },
-  dot: {backgroundColor: Colors.background},
-  activeDot: {backgroundColor: Colors.primaryColor},
+  dot: { backgroundColor: Colors.background },
+  activeDot: { backgroundColor: Colors.primaryColor },
   slideImg: {
     width: '100%',
     height: 228,
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     backgroundColor: Colors.background,
   },
-  left: {left: 16},
-  right: {right: 16},
+  left: { left: 16 },
+  right: { right: 16 },
   buttonIconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -92,17 +92,22 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   productTitle: {
-    fontWeight: '700',
-    fontSize:22
+    // fontWeight: '700',
+    fontSize: 22,
+    color: '#333f4b',
+    fontFamily: FontFamily.Bold
   },
   priceText: {
-    fontWeight: '700',
+    //fontWeight: '700',
     fontSize: 18,
     color: Colors.orangeLight,
+    fontFamily: FontFamily.Bold
   },
   shortDescription: {
     paddingBottom: 8,
     textAlign: 'left',
+    color: '#333f4b',
+    fontFamily: FontFamily.SemiBold
   },
   pickerGroup: {
     marginTop: 24,
@@ -116,7 +121,8 @@ const styles = StyleSheet.create({
   caption: {
     width: 80,
     textAlign: 'left',
-    color:Colors.orangeLight
+    color: Colors.orangeLight,
+    fontFamily:FontFamily.Regular
   },
   amountContainer: {
     flexDirection: 'row',
@@ -135,6 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.black,
     textAlign: 'center',
+    fontFamily: FontFamily.SemiBold
   },
   iconContainer: {
     justifyContent: 'center',
@@ -192,17 +199,17 @@ export default class ProductA extends Component {
   }
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
   navigationToSearch = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Search');
   }
 
   onPressAddToFavorites = () => {
-    const {favorite} = this.state;
+    const { favorite } = this.state;
 
     this.setState({
       favorite: !favorite,
@@ -210,9 +217,9 @@ export default class ProductA extends Component {
   };
 
   onPressIncreaseAmount = () => {
-    const {product} = this.state;
-    let {quantity} = product;
-    const {servingSize} = product;
+    const { product } = this.state;
+    let { quantity } = product;
+    const { servingSize } = product;
 
     quantity += 1;
     product.quantity = quantity;
@@ -226,9 +233,9 @@ export default class ProductA extends Component {
   };
 
   onPressDecreaseAmount = () => {
-    const {product} = this.state;
-    let {quantity} = product;
-    const {servingSize} = product;
+    const { product } = this.state;
+    let { quantity } = product;
+    const { servingSize } = product;
 
     quantity -= 1;
     quantity = quantity < 1 ? 1 : quantity;
@@ -243,8 +250,8 @@ export default class ProductA extends Component {
   };
 
   setServingSize = servingSize => () => {
-    const {product} = this.state;
-    const {quantity} = product;
+    const { product } = this.state;
+    const { quantity } = product;
 
     product.servingSize = servingSize;
 
@@ -257,7 +264,7 @@ export default class ProductA extends Component {
   };
 
   setSideDish = sideDish => () => {
-    const {product} = this.state;
+    const { product } = this.state;
     product.sideDish = sideDish;
 
     this.setState({
@@ -266,7 +273,7 @@ export default class ProductA extends Component {
   };
 
   render() {
-    const {product, favorite} = this.state;
+    const { product, favorite } = this.state;
     const {
       images,
       price,
@@ -342,7 +349,7 @@ export default class ProductA extends Component {
               ).toFixed(2)}`}</Text>
             </View>
           </View>
-                
+
           <View style={styles.descriptionContainer}>
             <SmallText style={styles.shortDescription}>{description}</SmallText>
           </View>

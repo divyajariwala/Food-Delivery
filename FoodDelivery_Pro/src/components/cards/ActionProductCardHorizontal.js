@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   I18nManager,
   Image,
@@ -15,7 +15,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {SwipeRow} from 'react-native-swipe-list-view';
+import { SwipeRow } from 'react-native-swipe-list-view';
 import Color from 'color';
 
 // import utils
@@ -27,6 +27,7 @@ import TouchableItem from '../TouchableItem';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // ActionProductCardHorizontal Config
 const imgHolder = require('../../assets/img/imgholder.png');
@@ -98,23 +99,25 @@ const styles = StyleSheet.create({
   },
   title: {
     // flex: 1,
-    width:'60%',
-    fontWeight: '500',
+    width: '60%',
+    //fontWeight: '500',
     fontSize: 16,
     color: Colors.primaryText,
     letterSpacing: 0.15,
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold
 
   },
   priceContainer: {
-    width:'40%',
+    width: '40%',
     justifyContent: 'center',
     alignItems: 'flex-end',
   },
   oldPrice: {
     fontSize: 15,
-    fontWeight: '500',
+    //fontWeight: '500',
     color: '#8e8e8e',
+    fontFamily: FontFamily.SemiBold
   },
   hr: {
     position: 'absolute',
@@ -124,9 +127,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#8e8e8e',
   },
   price: {
-    fontWeight: '700',
+    // fontWeight: '700',
     fontSize: 18,
     color: Colors.orangeLight,
+    fontFamily: FontFamily.SemiBold
   },
   actionContainer: {
     flexDirection: 'row',
@@ -143,8 +147,9 @@ const styles = StyleSheet.create({
     top: -1,
     paddingHorizontal: 20,
     fontSize: 18,
-    color: Colors.black,
+    color: '#333f4b',
     textAlign: 'center',
+    fontFamily: FontFamily.SemiBold
   },
   iconContainer: {
     justifyContent: 'center',
@@ -171,7 +176,7 @@ const styles = StyleSheet.create({
 });
 
 // ActionProductCardHorizontal DeleteButton
-const DeleteButton = ({onPress}) => (
+const DeleteButton = ({ onPress }) => (
   <View style={styles.deleteButtonContainer}>
     <TouchableItem onPress={onPress} style={styles.deleteButton}>
       <Icon name={DELETE_ICON} size={26} color={Colors.error} />
@@ -202,7 +207,7 @@ type Props = {
 export default class ActionProductCardHorizontal extends Component<
   Props,
   State,
-> {
+  > {
   constructor(props) {
     super(props);
 
@@ -210,12 +215,12 @@ export default class ActionProductCardHorizontal extends Component<
   }
 
   onPressAdd = () => {
-    const {onPressAdd = () => {}} = this.props;
+    const { onPressAdd = () => { } } = this.props;
     onPressAdd();
   };
 
   onPressRemove = () => {
-    const {onPressRemove = () => {}} = this.props;
+    const { onPressRemove = () => { } } = this.props;
     onPressRemove();
   };
 
@@ -293,15 +298,15 @@ export default class ActionProductCardHorizontal extends Component<
                         </View>
                       </View>
                     ) : (
-                      <View style={styles.priceContainer}>
-                        <Text style={styles.price}>
-                          {`$ ${price.toFixed(2)}`}
-                        </Text>
-                      </View>
-                    )}
+                        <View style={styles.priceContainer}>
+                          <Text style={styles.price}>
+                            {`$ ${price.toFixed(2)}`}
+                          </Text>
+                        </View>
+                      )}
                   </View>
 
-                    {/* <View style={styles.actionContainer}>
+                  {/* <View style={styles.actionContainer}>
                         <TouchableItem onPress={onPress}>
                             <View style={styles.iconContainer}>
                               <Icon 

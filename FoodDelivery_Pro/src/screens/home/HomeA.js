@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   FlatList,
   ImageBackground,
@@ -28,11 +28,12 @@ import getImgSource from '../../utils/getImgSource.js';
 import ActionProductCard from '../../components/cards/ActionProductCard';
 import ActionProductCardHorizontal from '../../components/cards/ActionProductCardHorizontal';
 import LinkButton from '../../components/buttons/LinkButton';
-import {Heading6} from '../../components/text/CustomText';
+import { Heading6 } from '../../components/text/CustomText';
 import TouchableItem from '../../components/TouchableItem';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 //import responsive screen
 import {
@@ -64,17 +65,22 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   titleText: {
-    fontWeight: '300',
+    //fontWeight: '300',
+    fontFamily:FontFamily.SemiBold
+    //fontFamily: FontFamily.SemiBold,
+
   },
   viewAllText: {
     color: Colors.orangeLight,
+    fontFamily: FontFamily.Bold
+
   },
   categoriesList: {
     paddingTop: 4,
     paddingRight: 16,
     paddingLeft: 8,
   },
-  cardImg: {borderRadius: 4},
+  cardImg: { borderRadius: 4 },
   card: {
     marginLeft: 8,
     width: 104,
@@ -98,16 +104,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.white,
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: -1, height: 1},
+    textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
   },
   categoryText: {
-    fontSize: hp(2.9),
+    fontSize: hp(2.5),
     marginLeft: 5,
     alignSelf: 'center',
     color: Colors.primaryColor,
     marginRight: hp(1.2),
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
+    fontFamily:FontFamily.Bold,
     alignSelf: 'center',
   },
   categoryImageStyle: {
@@ -213,15 +220,15 @@ export default class HomeA extends Component {
   }
 
   navigateTo = (screen) => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   onPressRemove = (item) => () => {
-    let {quantity} = item;
+    let { quantity } = item;
     quantity -= 1;
 
-    const {popularProducts} = this.state;
+    const { popularProducts } = this.state;
     const index = popularProducts.indexOf(item);
 
     if (quantity < 0) {
@@ -235,8 +242,8 @@ export default class HomeA extends Component {
   };
 
   onPressAdd = (item) => () => {
-    const {quantity} = item;
-    const {popularProducts} = this.state;
+    const { quantity } = item;
+    const { popularProducts } = this.state;
 
     const index = popularProducts.indexOf(item);
     popularProducts[index].quantity = quantity + 1;
@@ -248,7 +255,7 @@ export default class HomeA extends Component {
 
   keyExtractor = (item, index) => index.toString();
   //source={getImgSource(item.imageUri)}
-  renderCategoryItem = ({item, index}) => (
+  renderCategoryItem = ({ item, index }) => (
     <TouchableItem key={index} onPress={this.navigateTo('Category')}>
       <View
         style={{
@@ -283,7 +290,7 @@ export default class HomeA extends Component {
     // </ImageBackground>
   );
 
-  renderProductItem = ({item, index}) => (
+  renderProductItem = ({ item, index }) => (
     <ActionProductCard
       onPress={this.navigateTo('Product')}
       key={index}
@@ -295,7 +302,7 @@ export default class HomeA extends Component {
     />
   );
 
-  renderPopularProductItem = ({item, index}) => (
+  renderPopularProductItem = ({ item, index }) => (
     <ActionProductCardHorizontal
       onPress={this.navigateTo('Product')}
       onPressRemove={this.onPressRemove(item)}
@@ -314,7 +321,7 @@ export default class HomeA extends Component {
   );
 
   render() {
-    const {categories, products, popularProducts} = this.state;
+    const { categories, products, popularProducts } = this.state;
 
     return (
       <SafeAreaView style={styles.screenContainer}>
@@ -361,7 +368,7 @@ export default class HomeA extends Component {
             />
 
             <View style={styles.titleContainer}>
-              <Heading6 style={styles.titleText}>Popular</Heading6>
+              <Heading6 >Popular</Heading6>
               <LinkButton
                 title="View all"
                 titleStyle={styles.viewAllText}

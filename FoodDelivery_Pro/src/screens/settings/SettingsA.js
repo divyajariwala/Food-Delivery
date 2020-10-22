@@ -29,6 +29,8 @@ import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 // import colors
 import Colors from '../../theme/colors';
 import Iconss from "react-native-vector-icons/FontAwesome";
+import FontFamily from '../../theme/FontFamily';
+
 // SettingsA Config
 const isRTL = I18nManager.isRTL;
 const IOS = Platform.OS === 'ios';
@@ -84,14 +86,20 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   name: {
-    fontWeight: '500',
+    // fontWeight: '500',
     textAlign: 'left',
+    color: '#333f4b',
+    fontFamily: FontFamily.SemiBold
   },
   email: {
     paddingVertical: 2,
+    color: '#333f4b',
+    fontFamily: FontFamily.Regular
   },
   mediumText: {
-    fontWeight: '500',
+    //fontWeight: '500',
+    color: '#333f4b',
+    fontFamily: FontFamily.SemiBold
   },
   setting: {
     height: 56,
@@ -110,6 +118,14 @@ const styles = StyleSheet.create({
   },
   extraData: {
     textAlign: 'left',
+    color: '#333f4b',
+    fontFamily: FontFamily.Regular
+
+  },
+  extraData1: {
+    textAlign: 'left',
+    color: '#333f4b',
+    fontFamily: FontFamily.Regular
   },
   logout: { color: Colors.secondaryColor },
 });
@@ -308,14 +324,14 @@ export default class SettingsA extends Component {
           />
           <Divider type="inset" marginLeft={DIVIDER_MARGIN_LEFT} />
 
-            {/* Option1 */}
+          {/* Option1 */}
           {/* <Setting
             icon={DOLLAR_ICON}
             title="Add Your Restaurant"
             onPress={this.navigateTo('AddNameRest')}
           /> */}
 
-              {/* Option2 */}
+          {/* Option2 */}
           <Setting
             icon={DOLLAR_ICON}
             title="Add Your Restaurant"

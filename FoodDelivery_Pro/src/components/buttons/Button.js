@@ -7,15 +7,16 @@
 
 // import dependencies
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 // import components
-import {ButtonText} from '../text/CustomText';
+import { ButtonText } from '../text/CustomText';
 
 // import colors, layout
 import Colors from '../../theme/colors';
 import Layout from '../../theme/layout';
+import FontFamily from '../../theme/FontFamily';
 
 // Button Config
 const BUTTON_BORDER_RADIUS = 4;
@@ -63,6 +64,9 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Colors.onPrimaryColor,
+    fontFamily: FontFamily.SemiBold,
+    
+
   },
   outlinedTitle: {
     color: Colors.primaryColor,
@@ -129,39 +133,43 @@ const Button = ({
   titleColor,
   rounded,
   outlined,
+  titlestyle
 }: Props) => (
-  <TouchableOpacity
-    onPress={onPress}
-    disabled={disabled}
-    activeOpacity={activeOpacity}
-    style={[
-      styles.container,
-      borderRadius && {borderRadius},
-      color && {backgroundColor: color},
-      styles.defaultContainer,
-      height && {height},
-      small && styles.smallContainer,
-      rounded && styles.rounded,
-      outlined && styles.outlined,
-      height && rounded && {borderRadius: height / 2},
-      borderColor && {borderColor},
-      disabled && styles.disabled,
-      buttonStyle,
-    ]}>
-    {socialIconName && (
-      <View style={styles.socialIconContainer}>
-        <FAIcon name={socialIconName} size={20} color={iconColor} />
-      </View>
-    )}
-    <ButtonText
+    <TouchableOpacity
+      onPress={onPress}
+      disabled={disabled}
+      activeOpacity={activeOpacity}
       style={[
-        styles.title,
-        outlined && styles.outlinedTitle,
-        titleColor && {color: titleColor},
+        styles.container,
+        borderRadius && { borderRadius },
+        color && { backgroundColor: color },
+        styles.defaultContainer,
+        height && { height },
+        small && styles.smallContainer,
+        rounded && styles.rounded,
+        outlined && styles.outlined,
+        height && rounded && { borderRadius: height / 2 },
+        borderColor && { borderColor },
+        disabled && styles.disabled,
+        buttonStyle,
       ]}>
-      {title || 'Button'}
-    </ButtonText>
-  </TouchableOpacity>
-);
+      {socialIconName && (
+        <View style={styles.socialIconContainer}>
+          <FAIcon name={socialIconName} size={20} color={iconColor} />
+        </View>
+      )}
+      <ButtonText
+        style={[
+          styles.title,
+          outlined && styles.outlinedTitle,
+          titleColor && { color: titleColor },
+          titlestyle
+
+        ]}>
+        {title || 'Button'}
+
+      </ButtonText>
+    </TouchableOpacity>
+  );
 
 export default Button;

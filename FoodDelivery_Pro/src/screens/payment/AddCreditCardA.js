@@ -32,6 +32,7 @@ import UnderlineTextInput from '../../components/textinputs/UnderlineTextInput';
 // import colors, layout
 import Colors from '../../theme/colors';
 import Layout from '../../theme/layout';
+import FontFamily from '../../theme/FontFamily';
 
 // AddCreditCardA Config
 const isRTL = I18nManager.isRTL;
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
     width: 13,
     color: Colors.white,
     textAlign: 'center',
+    fontFamily: FontFamily.SemiBold
   },
   lowOpacity: {
     opacity: 0.4,
@@ -99,17 +101,21 @@ const styles = StyleSheet.create({
     marginRight: 38,
     color: Color(Colors.white).alpha(0.76),
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   whiteText: {
     color: Colors.white,
+    fontFamily: FontFamily.SemiBold
   },
   cardHolder: {
     flex: 1,
     marginRight: 12,
     height: 44,
+    fontFamily: FontFamily.SemiBold
   },
   cardHolderName: {
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold
   },
   expiryDate: {
     flexDirection: 'row',
@@ -608,7 +614,7 @@ export default class AddCreditCardA extends Component {
                   placeholder="Card Number"
                   focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
                   inputContainerStyle={styles.inputContainerStyle}
-                  style={{ width: '96%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1,borderColor:'#c7c7c7' }}
+                  style={{ width: '96%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1, borderColor: '#c7c7c7', fontFamily: FontFamily.Regular }}
                 />
                 {/* <Subtitle2 style={styles.overline}>Card Number</Subtitle2> */}
                 {/* <UnderlineTextInput
@@ -645,7 +651,7 @@ export default class AddCreditCardA extends Component {
                   returnKeyType='next'
                   value={cardHolder}
                   placeholder="Card Holder's Name"
-                  style={{ width: '48%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1, borderColor:'#c7c7c7'}}
+                  style={{ width: '48%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1, borderColor: '#c7c7c7', fontFamily: FontFamily.Regular }}
                 />
                 <TextInput
                   ref={(r) => {
@@ -665,7 +671,7 @@ export default class AddCreditCardA extends Component {
                   focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
                   inputContainerStyle={styles.inputContainerStyle}
                   placeholder="Expiry"
-                  style={{ width: '48%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1,borderColor:'#c7c7c7' }}
+                  style={{ width: '48%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1, borderColor: '#c7c7c7', fontFamily: FontFamily.Regular }}
                 />
 
                 {/* <UnderlineTextInput
@@ -743,7 +749,7 @@ export default class AddCreditCardA extends Component {
                 returnKeyType="done"
                 focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
                 inputContainerStyle={styles.inputContainerStyle}
-                style={{ width: '48%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1, marginLeft: '4.5%',borderColor:'#c7c7c7'  }}
+                style={{ width: '48%', height: 55, paddingLeft: 12, fontSize: 15, borderRadius: 8, borderWidth: 1, marginLeft: '4.5%', borderColor: '#c7c7c7' }}
               />
             </View>
 

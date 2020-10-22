@@ -32,6 +32,7 @@ import Logo from '../../components/logo/Logo';
 // import colors, layout
 import Colors from '../../theme/colors';
 import Layout from '../../theme/layout';
+import FontFamily from '../../theme/FontFamily';
 
 // import responsive screen
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
@@ -63,15 +64,16 @@ const styles = StyleSheet.create({
     // paddingTop: 23,
     borderRadius: 10,
     alignSelf: 'center',
-    margin:hp(3.5),
+    margin: hp(3.5),
     width: '55%',
   },
   forgotPassword: { paddingVertical: 15 },
   forgotPasswordText: {
-    fontWeight: '300',
+    //fontWeight: '300',
     fontSize: hp(3),
     color: Colors.secondaryText,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    fontFamily: FontFamily.Regular
   },
   separator: {
     flexDirection: 'row',
@@ -113,16 +115,19 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   companyName: {
-    fontSize: hp(5.2),
-    fontWeight: 'bold',
+    fontSize: hp(4.5),
+    //fontWeight: '700',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop: hp(3),
+    marginTop: 10,
+    color: '#333f4b',
+    fontFamily: FontFamily.Bold
   },
   signup: {
     fontSize: hp(2.7),
-    color: Colors.black,
-    marginLeft: 5
+    color: '#333f4b',
+    marginLeft: 5,
+    fontFamily: FontFamily.Regular
   }
 });
 
@@ -234,7 +239,7 @@ export default class SignInA extends Component {
             <View />
 
             <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-              <Logo size={50}  />
+              <Logo size={50} />
             </View>
 
             <View>
@@ -252,7 +257,7 @@ export default class SignInA extends Component {
                 onRef={r => {
                   this.email = r;
                 }}
-                style={{ borderWidth: 1, borderRadius: 7, paddingLeft: 10, borderColor: 'gray',fontSize:hp(2.5) }}
+                style={{ borderWidth: 1, borderRadius: 7, paddingLeft: 10, borderColor: 'gray', fontSize: hp(2.5), fontFamily: FontFamily.Regular }}
                 onChangeText={this.emailChange}
                 onFocus={this.emailFocus}
                 inputFocused={emailFocused}
@@ -272,7 +277,7 @@ export default class SignInA extends Component {
                 onRef={r => {
                   this.password = r;
                 }}
-                style={{ borderRadius: 7, paddingLeft: 10, borderWidth: 1, marginTop: hp(3),fontSize:hp(2.5) }}
+                style={{ borderRadius: 7, paddingLeft: 10, borderWidth: 1, marginTop: hp(3), fontSize: hp(2.5), fontFamily: FontFamily.Regular }}
                 onChangeText={this.passwordChange}
                 onFocus={this.passwordFocus}
                 inputFocused={passwordFocused}

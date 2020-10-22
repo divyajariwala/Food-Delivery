@@ -6,8 +6,8 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
-import {FlatList, SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { FlatList, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 
 // import components
 import ActionProductCardHorizontal from '../../components/cards/ActionProductCardHorizontal';
@@ -65,20 +65,20 @@ export default class CategoryA extends Component {
   }
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
   navigateTo = (screen) => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   onPressRemove = (item) => () => {
-    let {quantity} = item;
+    let { quantity } = item;
     quantity -= 1;
 
-    const {products} = this.state;
+    const { products } = this.state;
     const index = products.indexOf(item);
 
     if (quantity < 0) {
@@ -92,8 +92,8 @@ export default class CategoryA extends Component {
   };
 
   onPressAdd = (item) => () => {
-    const {quantity} = item;
-    const {products} = this.state;
+    const { quantity } = item;
+    const { products } = this.state;
 
     const index = products.indexOf(item);
     products[index].quantity = quantity + 1;
@@ -105,7 +105,7 @@ export default class CategoryA extends Component {
 
   keyExtractor = (item, index) => index.toString();
 
-  renderProductItem = ({item, index}) => (
+  renderProductItem = ({ item, index }) => (
     <ActionProductCardHorizontal
       onPress={this.navigateTo('Product')}
       onPressRemove={this.onPressRemove(item)}
@@ -124,7 +124,7 @@ export default class CategoryA extends Component {
   );
 
   render() {
-    const {products} = this.state;
+    const { products } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

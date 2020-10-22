@@ -17,6 +17,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import FontFamily from '../../theme/FontFamily';
 
 export default class AddDetailsRest extends Component {
   constructor(props) {
@@ -123,7 +124,9 @@ export default class AddDetailsRest extends Component {
                   textAlign: 'center',
                   alignSelf: 'center',
                   fontSize: 20,
-                  fontWeight: '800',
+                  fontFamily:FontFamily.SemiBold,
+                  color:'#333f4b'
+                  //fontWeight: '800',
                 }}>
                 Add Your Restaurant
               </Text>
@@ -158,9 +161,11 @@ export default class AddDetailsRest extends Component {
               <Text
                 style={{
                   fontSize: hp('2.5%'),
-                  fontWeight: 'bold',
+                  //fontWeight: 'bold',
                   alignSelf: 'center',
                   marginTop: hp('3%'),
+                  fontFamily:FontFamily.Bold,
+                  color:'#333f4b'
                 }}>
                 Almost there ...
               </Text>
@@ -170,7 +175,7 @@ export default class AddDetailsRest extends Component {
                   marginTop: '2.5%',
                   alignSelf: 'center',
                 }}>
-                <Text style={{fontSize: hp('2%')}}>
+                <Text style={{fontSize: hp('2%'),fontFamily:FontFamily.Regular,color:'#333f4b'}}>
                   Already have an account?
                 </Text>
                 <TouchableItem
@@ -180,6 +185,7 @@ export default class AddDetailsRest extends Component {
                       fontSize: hp('2%'),
                       color: Colors.orangeLight,
                       marginLeft: 5,
+                      fontFamily:FontFamily.Regular
                     }}>
                     Log in
                   </Text>
@@ -198,6 +204,7 @@ export default class AddDetailsRest extends Component {
                   fontSize: hp('2.5%'),
                   paddingLeft: 15,
                   borderColor: '#c7c7c7',
+                  fontFamily:FontFamily.Regular
                 }}
                 onChangeText={(businessAdd) =>
                   this.setState({businessAdd: businessAdd})
@@ -224,6 +231,7 @@ export default class AddDetailsRest extends Component {
                   fontSize: hp('2.5%'),
                   paddingLeft: 15,
                   borderColor: '#c7c7c7',
+                  fontFamily:FontFamily.Regular
                 }}
                 onChangeText={(businessAdd2) =>
                   this.setState({businessAdd2: businessAdd2})
@@ -253,6 +261,7 @@ export default class AddDetailsRest extends Component {
                     fontSize: hp('2.5%'),
                     paddingLeft: 15,
                     borderColor: '#c7c7c7',
+                    fontFamily:FontFamily.Regular
                   }}
                   onChangeText={(cityName) =>
                     this.setState({cityName: cityName})
@@ -280,6 +289,7 @@ export default class AddDetailsRest extends Component {
                     fontSize: hp('2.5%'),
                     paddingLeft: 15,
                     borderColor: '#c7c7c7',
+                    fontFamily:FontFamily.Regular
                   }}
                   onChangeText={(stateProvince) =>
                     this.setState({stateProvince: stateProvince})
@@ -310,6 +320,7 @@ export default class AddDetailsRest extends Component {
                     fontSize: hp('2.5%'),
                     paddingLeft: 15,
                     borderColor: '#c7c7c7',
+                    fontFamily:FontFamily.Regular
                   }}
                   onChangeText={(zipCode) => this.setState({zipCode: zipCode})}
                   placeholder="Zip Code"
@@ -335,6 +346,7 @@ export default class AddDetailsRest extends Component {
                     fontSize: hp('2.5%'),
                     paddingLeft: 15,
                     borderColor: '#c7c7c7',
+                    fontFamily:FontFamily.Regular
                   }}
                   onChangeText={(country) => this.setState({country: country})}
                   placeholder="Country"
@@ -361,6 +373,7 @@ export default class AddDetailsRest extends Component {
                   fontSize: hp('2.5%'),
                   paddingLeft: 15,
                   borderColor: '#c7c7c7',
+                  fontFamily:FontFamily.Regular
                 }}
                 onChangeText={(phoneNumber) =>
                   this.setState({phoneNumber: phoneNumber})
@@ -392,8 +405,9 @@ export default class AddDetailsRest extends Component {
                   <Text
                     style={{
                       textAlign: 'center',
-                      fontSize: hp(2.8),
+                      fontSize: hp(2.5),
                       color: 'white',
+                      fontFamily:FontFamily.Regular
                     }}>
                     BACK
                   </Text>
@@ -413,8 +427,9 @@ export default class AddDetailsRest extends Component {
                   <Text
                     style={{
                       textAlign: 'center',
-                      fontSize: hp(2.8),
+                      fontSize: hp(2.5),
                       color: 'white',
+                      fontFamily:FontFamily.Regular
                     }}>
                     Create Account
                   </Text>
@@ -432,6 +447,7 @@ export default class AddDetailsRest extends Component {
                     color: 'rgb(137,144,155)',
                     alignSelf: 'center',
                     textAlign: 'center',
+                    fontFamily:FontFamily.Regular
                   }}>
                   By Clicking the button above, you agree to our
                   <Text
@@ -439,6 +455,7 @@ export default class AddDetailsRest extends Component {
                       color: Colors.orangeLight,
                       fontSize: hp(2.1),
                       alignSelf: 'center',
+                      fontFamily:FontFamily.Regular
                     }}>
                     {' '}
                     Terms of Service{' '}
@@ -449,6 +466,7 @@ export default class AddDetailsRest extends Component {
                       color: Colors.orangeLight,
                       fontSize: hp(2.1),
                       alignSelf: 'center',
+                      fontFamily:FontFamily.Regular
                     }}>
                     {' '}
                     Privacy Policy

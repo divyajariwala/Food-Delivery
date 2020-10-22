@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   FlatList,
   I18nManager,
@@ -22,13 +22,14 @@ import {
 } from 'react-native';
 import Color from 'color';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontFamily from '../../theme/FontFamily';
 
 // import utils
 import getImgSource from '../../utils/getImgSource.js';
 
 // import components
 import TouchableItem from '../../components/TouchableItem';
-import {Heading6} from '../../components/text/CustomText';
+import { Heading6 } from '../../components/text/CustomText';
 
 //import responsive screen
 import {
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     marginTop: 5,
   },
-  cardImg: {borderRadius: 4},
+  cardImg: { borderRadius: 4 },
   card: {
     marginVertical: 6,
     marginHorizontal: 16,
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.white,
     textShadowColor: 'rgba(0, 0, 0, 0.88)',
-    textShadowOffset: {width: -1, height: 1},
+    textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
   },
   categoryImageStyle: {
@@ -140,7 +141,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginLeft: '10%',
     color: Colors.primaryColor,
-    fontWeight: '700',
+    //fontWeight: '700',
+    fontFamily: FontFamily.Bold
   },
 });
 
@@ -185,7 +187,7 @@ export default class CategoriesA extends Component {
   }
 
   navigateTo = (screen) => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
 
     Keyboard.dismiss();
 
@@ -194,7 +196,7 @@ export default class CategoriesA extends Component {
 
   keyExtractor = (item, index) => index.toString();
 
-  renderCategoryItem = ({item, index}) => (
+  renderCategoryItem = ({ item, index }) => (
     <View
       style={{
         marginHorizontal: hp(2.5),
@@ -206,7 +208,7 @@ export default class CategoriesA extends Component {
         borderColor: '#efefef',
       }}>
       <TouchableItem key={index} onPress={this.navigateTo('Category')}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <Image source={item.imageUri} style={styles.categoryImageStyle} />
           <Text style={styles.categoryText}>{item.name}</Text>
         </View>
@@ -232,14 +234,14 @@ export default class CategoriesA extends Component {
   );
 
   render() {
-    const {categories} = this.state;
+    const { categories } = this.state;
 
     return (
       <SafeAreaView style={styles.screenContainer}>
-        <StatusBar
+        {/* <StatusBar
           backgroundColor={Colors.statusBarColor}
           barStyle="dark-content"
-        />
+        /> */}
 
         {/* <View style={styles.searchButtonContainer}>
             <TouchableItem

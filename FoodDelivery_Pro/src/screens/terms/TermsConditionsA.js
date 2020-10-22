@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,10 +18,12 @@ import {
 
 // import components
 import Button from '../../components/buttons/Button';
-import {Caption} from '../../components/text/CustomText';
+import { Caption } from '../../components/text/CustomText';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
+import Color from 'color';
 
 // TermsConditionsA Config
 const APP_NAME = 'App Name';
@@ -39,24 +41,32 @@ const styles = StyleSheet.create({
   caption: {
     paddingBottom: 12,
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold,
+    color: Color(Colors.secondaryText)
+      .alpha(0.60),
   },
   heading: {
     paddingBottom: 16,
-    fontWeight: '700',
+    // fontWeight: '700',
     fontSize: 16,
     color: Colors.addNewAddressColor,
     letterSpacing: 0.2,
     textAlign: 'left',
+    fontFamily: FontFamily.Bold
     // writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr' // iOS
   },
   textBlock: {
     paddingBottom: 24,
-    fontWeight: '400',
+    //fontWeight: '400',
     fontSize: 14,
     lineHeight: 22,
-    color: Colors.primaryText,
+    // color: Colors.primaryText,
     letterSpacing: 0.4,
     textAlign: 'left',
+    fontFamily: FontFamily.Regular,
+    color: Color(Colors.secondaryText)
+      .alpha(0.60),
+
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -79,7 +89,7 @@ export default class TermsConditionsA extends Component {
   }
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 

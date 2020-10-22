@@ -27,6 +27,7 @@ import UnderlineTextInput from '../../components/textinputs/UnderlineTextInput';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // EditProfileA Config
 const AVATAR_SIZE = 100;
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
     color: Color(Colors.secondaryText).alpha(0.6),
     textAlign: 'left',
     marginTop : 20,
+    fontFamily:FontFamily.Regular
     
   },
   inputContainerStyle: {
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 17,
     paddingVertical: 0,
     paddingHorizontal: 0,
+    fontFamily: FontFamily.Regular
   },
 });
 
@@ -200,7 +203,7 @@ export default class EditProfileA extends Component {
               value={name}
               onChangeText={this.nameChange}
               onFocus={this.nameFocus}
-              style={{fontSize:17}}
+              style={{fontSize:17,fontFamily:FontFamily.Regular}}
               inputFocused={nameFocused}
               onSubmitEditing={this.focusOn(this.email)}
               returnKeyType="next"
@@ -216,7 +219,7 @@ export default class EditProfileA extends Component {
               value={email}
               onChangeText={this.emailChange}
               onFocus={this.emailFocus}
-              style={{fontSize:17}}
+              style={{fontSize:17,fontFamily:FontFamily.Regular}}
               inputFocused={emailFocused}
               onSubmitEditing={this.focusOn(this.phone)}
               returnKeyType="next"
@@ -235,7 +238,7 @@ export default class EditProfileA extends Component {
               keyboardType="phone-pad"
               onChangeText={this.phoneChange}
               onFocus={this.phoneFocus}
-              style={{fontSize:17}}
+              style={{fontSize:17,fontFamily:FontFamily.Regular}}
               inputFocused={phoneFocused}
               focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
               inputContainerStyle={styles.inputContainerStyle}

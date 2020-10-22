@@ -34,6 +34,7 @@ import TouchableItem from '../../components/TouchableItem';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 //import responsive screen
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     padding: hp(3),
   },
   swiperContent2: {
-    flex:1,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: hp(3),
@@ -105,7 +106,17 @@ const styles = StyleSheet.create({
     // backgroundColor: Colors.white,
   },
   info: {
-    fontWeight: '700',
+    // fontWeight: '700',
+    fontFamily: FontFamily.SemiBold,
+    color: Colors.white,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 4,
+    textAlign: 'left',
+    fontSize: hp(2.4),
+  },
+  info1: {
+    fontFamily: FontFamily.SemiBold,
   },
   infoText: {
     color: Colors.white,
@@ -114,6 +125,8 @@ const styles = StyleSheet.create({
     textShadowRadius: 4,
     textAlign: 'left',
     fontSize: hp(2.4),
+    fontFamily: FontFamily.Regular
+
   },
   caption: {
     color: Color(Colors.white).alpha(0.87),
@@ -121,13 +134,15 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 4,
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   description: {
     maxWidth: '82%',
   },
   phone: {
     marginTop: 8,
-    color: Colors.primaryColor,
+    color: '#003f5f',
+    fontFamily:FontFamily.SemiBold
   },
   social: {
     flexDirection: 'row',
@@ -216,7 +231,7 @@ export default class AboutUsA extends Component {
                     />
                   </View>
                   <View style={styles.pl8}>
-                    <Subtitle1 style={[styles.info, styles.infoText]}>
+                    <Subtitle1 style={[styles.info,]}>
                       MD Deliver
                       </Subtitle1>
                     <Caption style={styles.caption}>Food Delivery Service</Caption>
@@ -273,40 +288,40 @@ export default class AboutUsA extends Component {
                   start={isRTL ? { x: 0, y: 0 } : { x: 0.1, y: 0 }}
                   end={isRTL ? { x: 0.4, y: 0 } : { x: 1, y: 0 }}
                   containerStyle={styles.swiperContent}> */}
-                  <View style={styles.swiperContent2}>
-                  <View style={styles.row}>
-                    <View>
-                      <Caption style={[styles.caption, styles.pb6]}>
-                        ADDRESS
+              <View style={styles.swiperContent2}>
+                <View style={styles.row}>
+                  <View>
+                    <Caption style={[styles.caption, styles.pb6]}>
+                      ADDRESS
                       </Caption>
-                      <Subtitle1 style={[styles.info, styles.infoText]}>
-                        384 K Las Vegas Blvd,
+                    <Subtitle1 style={[styles.info, styles.infoText]}>
+                      384 K Las Vegas Blvd,
                       </Subtitle1>
-                      <Subtitle1 style={[styles.info, styles.infoText]}>
-                        Las Vegas, MS 85701
+                    <Subtitle1 style={[styles.info, styles.infoText]}>
+                      Las Vegas, MS 85701
                       </Subtitle1>
-                    </View>
                   </View>
-                  <View style={styles.description}>
-                    <Subtitle1 style={styles.infoText}>
-                      We are not just a team, we are family. Visit us.
+                </View>
+                <View style={styles.description}>
+                  <Subtitle1 style={styles.infoText}>
+                    We are not just a team, we are family. Visit us.
                     </Subtitle1>
-                  </View>
-                  </View>
-                {/* </GradientContainer>
+                </View>
+              </View>
+              {/* </GradientContainer>
               </ImageBackground> */}
             </Swiper>
           </View>
 
           <View style={styles.center}>
-            <Subtitle2 style={[styles.info,{color:Colors.orangeLight}]}>CALL US</Subtitle2>
+            <Subtitle2 style={[styles.info1, { color: Colors.orangeLight }]}>CALL US</Subtitle2>
             <Heading5 style={styles.phone} onPress={this.callPhone}>
               877-787-6368
             </Heading5>
           </View>
 
           <View style={styles.center}>
-            <Subtitle2 style={[styles.info,{color:Colors.orangeLight,}]}>FOLLOW US</Subtitle2>
+            <Subtitle2 style={[styles.info1, { color: Colors.orangeLight, }]}>FOLLOW US</Subtitle2>
             <View style={styles.social}>
               <View style={styles.socialButton}>
                 <TouchableItem rippleColor={Colors.white} borderless>
@@ -343,8 +358,8 @@ export default class AboutUsA extends Component {
           </View>
         </View>
 
-        <TouchableItem style={{justifyContent: 'center',alignItems: 'center',marginBottom:hp(4)}}>
-          <Text style={{color:Colors.orangeLight,fontSize:hp(2.5)}}>www.menudrive.com</Text>
+        <TouchableItem style={{ justifyContent: 'center', alignItems: 'center', marginBottom: hp(4) }}>
+          <Text style={{ color: Colors.orangeLight, fontSize: hp(2.5),fontFamily:FontFamily.Regular }}>www.menudrive.com</Text>
         </TouchableItem>
       </SafeAreaView>
     );

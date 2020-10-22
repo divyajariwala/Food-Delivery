@@ -6,22 +6,23 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
-import {Keyboard, StatusBar, StyleSheet, View} from 'react-native';
+import React, { Component } from 'react';
+import { Keyboard, StatusBar, StyleSheet, View } from 'react-native';
 import Color from 'color';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 // import components
 import ActivityIndicatorModal from '../../components/modals/ActivityIndicatorModal';
 import Button from '../../components/buttons/Button';
-import {Caption, Paragraph} from '../../components/text/CustomText';
+import { Caption, Paragraph } from '../../components/text/CustomText';
 import SafeAreaView from '../../components/SafeAreaView';
 import TouchableItem from '../../components/TouchableItem';
 import UnderlineTextInput from '../../components/textinputs/UnderlineTextInput';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // AddAddressB Config
 const HOME_ICON = 'home-variant-outline';
@@ -142,7 +143,7 @@ export default class AddAddressB extends Component {
   };
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 

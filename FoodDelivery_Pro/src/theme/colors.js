@@ -9,7 +9,7 @@ const themes = {
     primaryColorDark: "#809FAF",
     primaryColorLight: "#00e78c",
     onPrimaryColor: "#fff",
-    AboutUsColor : '#176796',
+    AboutUsColor: '#176796',
     // accent color, triad
     accentColor: "#0069b9",
     onAccentColor: "#fff",
@@ -33,27 +33,27 @@ const themes = {
     overlayColor: "#b90039",
 
     // text color
-    primaryText: "#010203",
-    secondaryText: "#5d5d5d",
+    primaryText: "#333f4b",
+    secondaryText: "#333f4b",
     disabledText: "rgba(0, 0, 0, 0.38)",
 
     // background, surface
     background: "#fff",
     onBackground: "#212121",
     surface: "#fff",
-    onSurface: "#757575",
+    onSurface: "#333f4b",
     error: "#cd040b",
     onError: "#fff",
     black: "#010203",
     white: "#fff",
-    orange :"#e8500e",
-    orangeLight : '#F89344',
-    orangeSuperLight:'#FCBA86',
-    lightBackGroundText : '#003f5f',
+    orange: "#e8500e",
+    orangeLight: '#F89344',
+    orangeSuperLight: '#FCBA86',
+    lightBackGroundText: '#003f5f',
     submitColor: '#239d19',
-    addNewAddressColor : '#2CA323',
-    cancelButtonColor : '#C9311A',
-    darkGrayColor : '#A9A9A9',
+    addNewAddressColor: '#2CA323',
+    cancelButtonColor: '#C9311A',
+    darkGrayColor: '#A9A9A9',
   },
   redOrange: {
     // primary color

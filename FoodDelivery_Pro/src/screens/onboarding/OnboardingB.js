@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: '700',
     fontSize: 14,
-    color: Colors.onPrimaryColor,
+    color: Colors.lightBackGroundText,
   },
   dot: {
     margin: 4,

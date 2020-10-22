@@ -7,7 +7,7 @@
 
 // import dependencies
 import React, { Component } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, View,Text } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, View, Text } from 'react-native';
 
 // import components
 import Button from '../../components/buttons/Button';
@@ -18,6 +18,7 @@ import Logo from '../../components/logo/Logo';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // WelcomeA Config
 
@@ -47,15 +48,28 @@ const styles = StyleSheet.create({
   linkButtonText: {
     color: Colors.onSurface,
     textAlign: 'center',
+    fontFamily: FontFamily.SemiBold
+
   },
-  companyName :{
-    fontSize:hp(5),
-    fontWeight:'700',
+  companyName: {
+    fontSize: hp(5),
+    //fontWeight: '700',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop:hp(1.2),
-    color:"#333F4B",
+    marginTop: hp(1.2),
+    color: "#333f4b",
+    fontFamily: FontFamily.Bold
   },
+  newButtom: {
+    color: '#ffffff',
+    fontFamily: FontFamily.SemiBold,
+
+
+  },
+  hereButton: {
+    color: Colors.primaryColor,
+    fontFamily: FontFamily.SemiBold
+  }
 });
 
 // WelcomeA Screen
@@ -89,6 +103,8 @@ export default class WelcomeA extends Component {
           <Button
             onPress={this.navigateTo('SignUp')}
             title={'I am new'.toUpperCase()}
+
+
           />
 
           <View style={styles.vspace16} />

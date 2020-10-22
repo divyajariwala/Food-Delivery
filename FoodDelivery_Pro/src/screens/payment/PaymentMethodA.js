@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   I18nManager,
   Platform,
@@ -23,12 +23,13 @@ import BottomSheet from '../../components/bottomsheet/BottomSheet';
 import Button from '../../components/buttons/Button';
 import CreditCard from '../../components/creditcard/CreditCard';
 import Icon from '../../components/icon/Icon';
-import {Caption, Subtitle1} from '../../components/text/CustomText';
+import { Caption, Subtitle1 } from '../../components/text/CustomText';
 import TouchableItem from '../../components/TouchableItem';
 import Icons from "react-native-vector-icons/Feather";
 import Iconss from "react-native-vector-icons/FontAwesome";
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // PaymentMethodA Config
 const isRTL = I18nManager.isRTL;
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   },
   paginationStyle: {
     bottom: 0,
-    transform: [{scaleX: I18nManager.isRTL ? -1 : 1}],
+    transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
   },
   cardContainer: {
     width: '100%',
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     height: 64,
   },
-  bottomSheetCaption: {paddingVertical: 2},
+  bottomSheetCaption: { paddingVertical: 2, color: '#89909b', fontFamily: FontFamily.SemiBold },
   bottomSheetAction: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -122,12 +123,12 @@ export default class PaymentMethodA extends Component {
   }
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
   navigateTo = screen => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
@@ -141,7 +142,7 @@ export default class PaymentMethodA extends Component {
   };
 
   render() {
-    const {cardNumber} = this.state;
+    const { cardNumber } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>

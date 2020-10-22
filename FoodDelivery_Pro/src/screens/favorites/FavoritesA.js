@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   FlatList,
   I18nManager,
@@ -20,10 +20,11 @@ import remove from 'lodash/remove';
 // import components
 import ActionProductCardHorizontal from '../../components/cards/ActionProductCardHorizontal';
 import EmptyState from '../../components/emptystate/EmptyState';
-import {Heading6, SmallText} from '../../components/text/CustomText';
+import { Heading6, SmallText } from '../../components/text/CustomText';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // FavoritesA Config
 const isRTL = I18nManager.isRTL;
@@ -37,15 +38,17 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     paddingHorizontal: 16,
-    borderBottomWidth:0.4,
-    borderColor:'#89909b',
-    marginBottom:10
+    borderBottomWidth: 0.4,
+    borderColor: '#89909b',
+    marginBottom: 10
   },
   titleText: {
     paddingTop: 16,
     paddingBottom: 24,
-    fontWeight: '300',
+    //fontWeight: '300',
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold,
+    color: '#333f4b'
   },
   productList: {
     // spacing = paddingHorizontal + ActionProductCardHorizontal margin = 12 + 4 = 16
@@ -100,12 +103,12 @@ export default class FavoritesA extends Component {
   }
 
   navigateTo = screen => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   swipeoutOnPressRemove = item => () => {
-    let {products} = this.state;
+    let { products } = this.state;
     const index = products.indexOf(item);
 
     products = remove(products, n => products.indexOf(n) !== index);
@@ -116,10 +119,10 @@ export default class FavoritesA extends Component {
   };
 
   onPressRemove = item => () => {
-    let {quantity} = item;
+    let { quantity } = item;
     quantity -= 1;
 
-    const {products} = this.state;
+    const { products } = this.state;
     const index = products.indexOf(item);
 
     if (quantity < 0) {
@@ -133,8 +136,8 @@ export default class FavoritesA extends Component {
   };
 
   onPressAdd = item => () => {
-    const {quantity} = item;
-    const {products} = this.state;
+    const { quantity } = item;
+    const { products } = this.state;
 
     const index = products.indexOf(item);
     products[index].quantity = quantity + 1;
@@ -146,7 +149,7 @@ export default class FavoritesA extends Component {
 
   keyExtractor = item => item.id.toString();
 
-  renderProductItem = ({item}) => (
+  renderProductItem = ({ item }) => (
     <ActionProductCardHorizontal
       key={item.id}
       onPress={this.navigateTo('Product')}
@@ -164,7 +167,7 @@ export default class FavoritesA extends Component {
   );
 
   render() {
-    const {products} = this.state;
+    const { products } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -185,23 +188,23 @@ export default class FavoritesA extends Component {
             message="Save your favorite food so you can always find it here and make order easier"
           />
         ) : (
-          <Fragment>
-            <FlatList
-              data={products}
-              keyExtractor={this.keyExtractor}
-              renderItem={this.renderProductItem}
-              contentContainerStyle={styles.productList}
-            />
+            <Fragment>
+              <FlatList
+                data={products}
+                keyExtractor={this.keyExtractor}
+                renderItem={this.renderProductItem}
+                contentContainerStyle={styles.productList}
+              />
 
-            <View style={styles.bottomTextInfo}>
-              <View style={styles.info}>
-                <SmallText>
-                  {`Swipe ${isRTL ? 'right' : 'left'} to remove items`}
-                </SmallText>
+              <View style={styles.bottomTextInfo}>
+                <View style={styles.info}>
+                  <SmallText>
+                    {`Swipe ${isRTL ? 'right' : 'left'} to remove items`}
+                  </SmallText>
+                </View>
               </View>
-            </View>
-          </Fragment>
-        )}
+            </Fragment>
+          )}
       </SafeAreaView>
     );
   }

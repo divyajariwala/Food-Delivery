@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   I18nManager,
   Platform,
@@ -17,7 +17,7 @@ import {
   View,
 } from 'react-native';
 import Color from 'color';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Swiper from 'react-native-swiper';
 
 // import components
@@ -25,12 +25,13 @@ import Button from '../../components/buttons/Button';
 import CreditCard from '../../components/creditcard/CreditCard';
 import InfoModal from '../../components/modals/InfoModal';
 import LinkButton from '../../components/buttons/LinkButton';
-import {Caption, Subtitle1, Subtitle2} from '../../components/text/CustomText';
+import { Caption, Subtitle1, Subtitle2 } from '../../components/text/CustomText';
 import UnderlineTextInput from '../../components/textinputs/UnderlineTextInput';
 
 // import colors
 import Colors from '../../theme/colors';
 import TouchableItem from '../../components/TouchableItem';
+import FontFamily from '../../theme/FontFamily';
 
 // CheckoutA Config
 const isRTL = I18nManager.isRTL;
@@ -42,7 +43,7 @@ const CHECKMARK_ICON =
 
 // CheckoutA Styles
 const styles = StyleSheet.create({
-  pt16: {paddingTop: 16},
+  pt16: { paddingTop: 16 },
   screenContainer: {
     flex: 1,
     backgroundColor: Colors.background,
@@ -67,16 +68,17 @@ const styles = StyleSheet.create({
     height: 48,
   },
   stepContainer: {
-    marginTop:15,
+    marginTop: 15,
     width: 80,
     justifyContent: 'center',
     alignItems: 'center',
   },
   stepText: {
     fontWeight: '700',
-    color: Color(Colors.black).alpha(0.56),
-    fontSize:14,
-    
+    color: Color(Colors.primaryColor).alpha(0.56),
+    fontSize: 14,
+    fontFamily: FontFamily.Bold
+
   },
   activeStepText: {
     color: Colors.primaryColor,
@@ -98,11 +100,12 @@ const styles = StyleSheet.create({
   form: {
     paddingVertical: 24,
     paddingHorizontal: 20,
-    marginTop:15,
+    marginTop: 15,
   },
   overline: {
     color: Color(Colors.secondaryText).alpha(0.6),
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   inputContainerStyle: {
     marginTop: 0,
@@ -113,6 +116,7 @@ const styles = StyleSheet.create({
   actionButton: {
     color: Colors.orangeLight,
     textAlign: 'center',
+    fontFamily:FontFamily.SemiBold
   },
   buttonContainer: {
     paddingTop: 16,
@@ -127,13 +131,13 @@ const styles = StyleSheet.create({
   },
   linkButton: {
     color: Colors.primaryColor,
-    borderWidth:1,
-    borderRadius:4,
-    width:'99%',
-    textAlign:'center',
-    paddingTop:11,
-    paddingBottom:11,
-    fontSize:14
+    borderWidth: 1,
+    borderRadius: 4,
+    width: '99%',
+    textAlign: 'center',
+    paddingTop: 11,
+    paddingBottom: 11,
+    fontSize: 14
   },
   orderInfo: {
     paddingVertical: 8,
@@ -169,12 +173,12 @@ export default class CheckoutA extends Component {
   }
 
   navigateTo = screen => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
@@ -271,7 +275,7 @@ export default class CheckoutA extends Component {
   };
 
   hopFunction = index => () => {
-      this.swiper.scrollTo(index,true);
+    this.swiper.scrollTo(index, true);
   }
 
   render() {
@@ -297,71 +301,71 @@ export default class CheckoutA extends Component {
           <View style={styles.headerContainer}>
             <View style={styles.stepIndicator}>
               <TouchableItem onPress={this.hopFunction(0)}>
-              <View style={styles.stepContainer}>
-                <Caption
-                  style={[
-                    styles.stepText,
-                    activeIndex === 0 && styles.activeStepText,
-                  ]}>
-                  Delivery
+                <View style={styles.stepContainer}>
+                  <Caption
+                    style={[
+                      styles.stepText,
+                      activeIndex === 0 && styles.activeStepText,
+                    ]}>
+                    Delivery
                 </Caption>
-                <Caption
-                  style={[
-                    styles.stepText,
-                    activeIndex === 0 && styles.activeStepText,
-                  ]}>
-                  address
+                  <Caption
+                    style={[
+                      styles.stepText,
+                      activeIndex === 0 && styles.activeStepText,
+                    ]}>
+                    address
                 </Caption>
-              </View>
+                </View>
               </TouchableItem>
 
               <View
                 style={[styles.line, activeIndex > 0 && styles.activeLine]}
               />
 
-            <TouchableItem onPress={this.hopFunction(1)}>   
-              <View style={styles.stepContainer}>
-                <Caption
-                  style={[
-                    styles.stepText,
-                    activeIndex === 1 && styles.activeStepText,
-                  ]}>
-                  Payment
+              <TouchableItem onPress={this.hopFunction(1)}>
+                <View style={styles.stepContainer}>
+                  <Caption
+                    style={[
+                      styles.stepText,
+                      activeIndex === 1 && styles.activeStepText,
+                    ]}>
+                    Payment
                 </Caption>
-                <Caption
-                  style={[
-                    styles.stepText,
-                    activeIndex === 1 && styles.activeStepText,
-                  ]}>
-                  method
+                  <Caption
+                    style={[
+                      styles.stepText,
+                      activeIndex === 1 && styles.activeStepText,
+                    ]}>
+                    method
                 </Caption>
-              </View>
-            </TouchableItem>
+                </View>
+              </TouchableItem>
 
               <View
                 style={[styles.line, activeIndex > 1 && styles.activeLine]}
               />
 
-            
+
               <TouchableItem onPress={this.hopFunction(2)}>
-              <View style={styles.stepContainer}>
-                <Caption
-                  style={[
-                    styles.stepText,
-                    activeIndex === 2 && styles.activeStepText,
-                  ]}>
-                  Place
+                <View style={styles.stepContainer}>
+                  <Caption
+                    style={[
+                      styles.stepText,
+                      activeIndex === 2 && styles.activeStepText,
+                    ]}>
+                    Place
                 </Caption>
-                <Caption
-                  style={[
-                    styles.stepText,
-                    activeIndex === 2 && styles.activeStepText,
-                  ]}>
-                  order
+                  <Caption
+                    style={[
+                      styles.stepText,
+                      activeIndex === 2 && styles.activeStepText,
+                    ]}>
+                    order
                 </Caption>
-              </View>
-               </TouchableItem>
-            
+                </View>
+              </TouchableItem>
+
             </View>
           </View>
 
@@ -374,7 +378,7 @@ export default class CheckoutA extends Component {
               onIndexChanged={this.onIndexChanged}
               loop={false}
               showsPagination={false}
-              // scrollEnabled={false}
+            // scrollEnabled={false}
             >
               {/* STEP 1 */}
               <KeyboardAwareScrollView
@@ -387,7 +391,7 @@ export default class CheckoutA extends Component {
                       this.address = r;
                     }}
                     value={address}
-                    style={{fontSize:18,marginBottom:14,borderBottomWidth:0.2,borderColor: '#89909b',}}
+                    style={{ fontSize: 18, marginBottom: 14, borderBottomWidth: 0.2, borderColor: '#89909b', }}
                     onChangeText={this.addressChange}
                     onFocus={this.addressFocus}
                     inputFocused={addressFocused}
@@ -403,7 +407,7 @@ export default class CheckoutA extends Component {
                       this.city = r;
                     }}
                     value={city}
-                    style={{fontSize:18,marginBottom:14,borderBottomWidth:0.2,borderColor: '#89909b',}}
+                    style={{ fontSize: 18, marginBottom: 14, borderBottomWidth: 0.2, borderColor: '#89909b', }}
                     onChangeText={this.cityChange}
                     onFocus={this.cityFocus}
                     inputFocused={cityFocused}
@@ -419,7 +423,7 @@ export default class CheckoutA extends Component {
                       this.zip = r;
                     }}
                     value={zip}
-                    style={{fontSize:18,marginBottom:14,borderBottomWidth:0.2,borderColor: '#89909b',}}
+                    style={{ fontSize: 18, marginBottom: 14, borderBottomWidth: 0.2, borderColor: '#89909b', }}
                     onChangeText={this.zipChange}
                     onFocus={this.zipFocus}
                     inputFocused={zipFocused}
@@ -438,7 +442,7 @@ export default class CheckoutA extends Component {
               </KeyboardAwareScrollView>
 
               {/* STEP 2 */}
-              <View style={{marginTop:20}}>
+              <View style={{ marginTop: 20 }}>
                 <CreditCard
                   colors={['#003F5F', '#176796']}
                   brand="visa"

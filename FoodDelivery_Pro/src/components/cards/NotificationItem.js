@@ -7,18 +7,18 @@
 
 // import dependencies
 import React from 'react';
-import {I18nManager, StyleSheet, View,Platform} from 'react-native';
+import { I18nManager, StyleSheet, View, Platform } from 'react-native';
 import Color from 'color';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import {SwipeRow} from 'react-native-swipe-list-view';
+import { SwipeRow } from 'react-native-swipe-list-view';
 import Icons from "react-native-vector-icons/Ionicons";
 // import components
-import {Caption, Subtitle1, Subtitle2} from '../text/CustomText';
+import { Caption, Subtitle1, Subtitle2 } from '../text/CustomText';
 import TouchableItem from '../TouchableItem';
 
 // import colors
 import Colors from '../../theme/colors';
-
+import FontFamily from '../../theme/FontFamily';
 // NotificationItem Config
 const isRTL = I18nManager.isRTL;
 
@@ -96,26 +96,34 @@ const styles = StyleSheet.create({
   },
   firstLine: {
     flex: 1,
+    fontFamily: FontFamily.Bold
   },
   readedFirstLine: {
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   unreadFirstLine: {
-    fontWeight: '700',
+    //fontWeight: '700',
     textAlign: 'left',
+    fontFamily: FontFamily.Bold
   },
   unreadText: {
     color: Colors.primaryText,
-    fontWeight: '500',
+    //fontWeight: '500',
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
+
   },
   readedText: {
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   meta: {
     marginLeft: 4,
     minWidth: 24,
     height: 24,
+    fontFamily: FontFamily.Regular
+
   },
 });
 
@@ -123,11 +131,11 @@ const styles = StyleSheet.create({
 type Props = {
   activeOpacity: number,
   type:
-    | 'on_the_way'
-    | 'ready_for_delivery'
-    | 'failed_delivery'
-    | 'delivered'
-    | 'exception',
+  | 'on_the_way'
+  | 'ready_for_delivery'
+  | 'failed_delivery'
+  | 'delivered'
+  | 'exception',
   title: string,
   text: string,
   meta: string,
@@ -185,7 +193,7 @@ const renderIcon = (type, readOut) => {
 };
 
 // NotificationItem DeleteButton
-const DeleteButton = ({onPress}) => (
+const DeleteButton = ({ onPress }) => (
   <View style={styles.deleteButtonContainer}>
     <TouchableItem onPress={onPress} style={styles.deleteButton}>
       <Icon name={DELETE_ICON} size={24} color={Colors.error} />

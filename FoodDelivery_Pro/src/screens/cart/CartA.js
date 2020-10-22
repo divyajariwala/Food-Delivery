@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -19,12 +19,13 @@ import remove from 'lodash/remove';
 // import components
 import ActionProductCardHorizontal from '../../components/cards/ActionProductCardHorizontal';
 import Button from '../../components/buttons/Button';
-import {Heading6, Subtitle1} from '../../components/text/CustomText';
+import { Heading6, Subtitle1 } from '../../components/text/CustomText';
 import Divider from '../../components/divider/Divider';
 import EmptyState from '../../components/emptystate/EmptyState';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
 
 // CartA Config
 const EMPTY_STATE_ICON = 'cart-remove';
@@ -55,7 +56,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   titleText: {
-    fontWeight: '300',
+    //fontWeight: '300',
+    color: '#333f4b',
+    fontFamily: FontFamily.SemiBold
   },
   productList: {
     // spacing = paddingHorizontal + ActionProductCardHorizontal margin = 12 + 4 = 16
@@ -64,12 +67,14 @@ const styles = StyleSheet.create({
   subTotalText: {
     top: -2,
     fontWeight: '500',
-    color: Colors.onSurface,
+    color: '#89909b',
+    fontFamily: FontFamily.SemiBold
   },
   subTotalPriceText: {
     fontWeight: '500',
     color: Colors.orangeLight,
     fontSize: 20,
+    fontFamily: FontFamily.SemiBold
   },
   bottomButtonContainer: {
     width: '100%',
@@ -117,12 +122,12 @@ export default class CartA extends Component {
   };
 
   navigateTo = (screen) => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   swipeoutOnPressRemove = (item) => () => {
-    let {products} = this.state;
+    let { products } = this.state;
     const index = products.indexOf(item);
 
     products = remove(products, (n) => products.indexOf(n) !== index);
@@ -138,10 +143,10 @@ export default class CartA extends Component {
   };
 
   onPressRemove = (item) => () => {
-    let {quantity} = item;
+    let { quantity } = item;
     quantity -= 1;
 
-    let {products} = this.state;
+    let { products } = this.state;
     const index = products.indexOf(item);
 
     if (quantity === 0) {
@@ -161,8 +166,8 @@ export default class CartA extends Component {
   };
 
   onPressAdd = (item) => () => {
-    const {quantity} = item;
-    const {products} = this.state;
+    const { quantity } = item;
+    const { products } = this.state;
 
     const index = products.indexOf(item);
     products[index].quantity = quantity + 1;
@@ -178,12 +183,12 @@ export default class CartA extends Component {
   };
 
   updateTotalAmount = () => {
-    const {products} = this.state;
+    const { products } = this.state;
     let total = 0.0;
 
     products.forEach((product) => {
-      let {price} = product;
-      const {discountPercentage, quantity} = product;
+      let { price } = product;
+      const { discountPercentage, quantity } = product;
 
       if (typeof discountPercentage !== 'undefined') {
         price -= price * discountPercentage * 0.01;
@@ -198,7 +203,7 @@ export default class CartA extends Component {
 
   keyExtractor = (item) => item.id.toString();
 
-  renderProductItem = ({item}) => (
+  renderProductItem = ({ item }) => (
     <ActionProductCardHorizontal
       key={item.id}
       onPress={this.navigateTo('Product')}
@@ -217,7 +222,7 @@ export default class CartA extends Component {
   );
 
   render() {
-    const {total, products} = this.state;
+    const { total, products } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -246,23 +251,23 @@ export default class CartA extends Component {
             message="Looks like you haven't added anything to your cart yet"
           />
         ) : (
-          <Fragment>
-            <View style={styles.flex1}>
-              <FlatList
-                data={products}
-                keyExtractor={this.keyExtractor}
-                renderItem={this.renderProductItem}
-                contentContainerStyle={styles.productList}
-              />
-            </View>
+            <Fragment>
+              <View style={styles.flex1}>
+                <FlatList
+                  data={products}
+                  keyExtractor={this.keyExtractor}
+                  renderItem={this.renderProductItem}
+                  contentContainerStyle={styles.productList}
+                />
+              </View>
 
-            <Divider />
+              <Divider />
 
-            <View style={styles.bottomButtonContainer}>
-              <Button onPress={this.navigateTo('Checkout')} title="Checkout" />
-            </View>
-          </Fragment>
-        )}
+              <View style={styles.bottomButtonContainer}>
+                <Button onPress={this.navigateTo('Checkout')} title="Checkout" />
+              </View>
+            </Fragment>
+          )}
       </SafeAreaView>
     );
   }

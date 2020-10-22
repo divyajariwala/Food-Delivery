@@ -7,9 +7,9 @@
 
 // import dependencies
 import React from 'react';
-import {Platform} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { Platform } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 // import components
 import HeaderIconButton from '../components/navigation/HeaderIconButton';
@@ -85,13 +85,15 @@ import RestaurantNavigator from '../screens/addRestaurant/RestaurantNavigator';
 
 // import colors
 import Colors from '../theme/colors';
+import FontFamily from '../theme/FontFamily';
+
 import Icons from 'react-native-vector-icons/MaterialIcons';
 // MainNavigatorA Config
 const SAVE_ICON = Platform.OS === 'ios' ? 'ios-checkmark' : 'md-checkmark';
 import AddNameRest from '../screens/addRestaurant/AddNameRest';
 import AddDetailsRest from '../screens/addRestaurant/AddDetailsRest';
 import ActivationSuccess from '../screens/addRestaurant/ActivationSuccess';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // create stack navigator
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -116,12 +118,12 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="SignUp"
@@ -138,7 +140,7 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Verification"
           component={Verification}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="SignIn"
@@ -167,13 +169,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="TermsConditions"
           component={TermsConditions}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Terms and Conditions',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -183,18 +185,18 @@ function MainNavigatorA() {
         <Stack.Screen
           name="HomeNavigator"
           component={HomeNavigator}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Categories"
           component={Categories}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'All Categories',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.navigate('Search')}
               />
@@ -204,13 +206,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Category"
           component={Category}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Pizza',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.navigate('Search')}
               />
@@ -220,18 +222,18 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Product"
           component={Product}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="SearchResults"
           component={SearchResults}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Search Results',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontWeight: '400' },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.navigate('Search')}
               />
@@ -241,13 +243,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Checkout"
           component={Checkout}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Checkout',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontWeight: '400' },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -257,9 +259,9 @@ function MainNavigatorA() {
         <Stack.Screen
           name="EditProfile"
           component={EditProfile}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Edit Profile',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerRight: () => (
               <HeaderIconButton
                 onPress={() => navigation.goBack()}
@@ -270,7 +272,7 @@ function MainNavigatorA() {
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -280,13 +282,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="DeliveryAddress"
           component={DeliveryAddress}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Delivery Address',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -303,13 +305,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="AddAddress"
           component={AddAddress}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Add New Address',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -319,13 +321,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="EditAddress"
           component={EditAddress}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Edit Address',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontWeight: '400' },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -335,9 +337,9 @@ function MainNavigatorA() {
         <Stack.Screen
           name="PaymentMethod"
           component={PaymentMethod}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Payment Method',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontWeight: '400' },
             // headerRight: () => (
             //   <HeaderIconButton
             //     onPress={() => navigation.goBack()}
@@ -348,7 +350,7 @@ function MainNavigatorA() {
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -358,13 +360,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="AddCreditCard"
           component={AddCreditCard}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Add Credit Card',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.navigate('HomeNavigator')}
               />
@@ -374,13 +376,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Notifications"
           component={Notifications}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'Notifications',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -390,13 +392,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="Orders"
           component={Orders}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'My Orders',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />
@@ -406,7 +408,7 @@ function MainNavigatorA() {
         <Stack.Screen
           name="RestaurantNavigator"
           component={RestaurantNavigator}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             headerShown: false,
           })}
         />
@@ -414,13 +416,13 @@ function MainNavigatorA() {
         <Stack.Screen
           name="AboutUs"
           component={AboutUs}
-          options={({navigation}) => ({
+          options={({ navigation }) => ({
             title: 'About Us',
-            headerTitleStyle: {fontWeight: '400'},
+            headerTitleStyle: { fontFamily: FontFamily.SemiBold },
             headerLeft: () => (
               <Icons
                 size={35}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 name={'keyboard-arrow-left'}
                 onPress={() => navigation.goBack()}
               />

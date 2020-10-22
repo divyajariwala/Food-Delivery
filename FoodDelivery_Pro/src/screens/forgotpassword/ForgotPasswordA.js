@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Keyboard,
   ScrollView,
@@ -24,16 +24,17 @@ import Color from 'color';
 // import components
 import ActivityIndicatorModal from '../../components/modals/ActivityIndicatorModal';
 import Button from '../../components/buttons/Button';
-import {Paragraph} from '../../components/text/CustomText';
+import { Paragraph } from '../../components/text/CustomText';
 import UnderlineTextInput from '../../components/textinputs/UnderlineTextInput';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // import colors
 import Colors from '../../theme/colors';
 import Logo from '../../components/logo/Logo';
 import Icons from "react-native-vector-icons/Ionicons";
+import FontFamily from '../../theme/FontFamily';
 
 //import responsive screens
-import { heightPercentageToDP as hp,widthPercentageToDP as wp } from "react-native-responsive-screen";
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 // ForgotPasswordA Config
 const PLACEHOLDER_TEXT_COLOR = 'rgba(0, 0, 0, 0.4)';
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   contentContainerStyle: {
-    flex:1,
+    flex: 1,
   },
   instructionContainer: {
     justifyContent: 'center',
@@ -67,29 +68,32 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: Color(Colors.primaryColor).alpha(0.16),
   },
-  companyName:{
-    fontSize:hp(4.3),
-    fontWeight:'bold',
+  companyName: {
+    fontSize: hp(4.5),
+    //fontWeight: '700',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop:hp(4.3),
-    marginBottom:hp(4.3),
+    marginTop: 10,
+    color: '#333f4b',
+    fontFamily: FontFamily.Bold
   },
   instruction: {
     marginTop: hp(1.3),
     paddingHorizontal: wp(5),
     fontSize: hp(2.5),
     textAlign: 'center',
+    color: '#333f4b',
+    fontFamily: FontFamily.SemiBold
   },
   inputContainer: {
     paddingTop: hp(2.6),
-    marginTop:hp(3.6)
+    marginTop: hp(3.6)
   },
   buttonContainer: {
     paddingTop: hp(6),
     alignSelf: 'center',
-    marginTop:hp(0.7),
-    width:"60%"
+    marginTop: hp(0.7),
+    width: "60%"
   },
 });
 
@@ -142,7 +146,7 @@ export default class ForgotPasswordA extends Component {
   };
 
   navigateTo = (screen) => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
@@ -171,7 +175,7 @@ export default class ForgotPasswordA extends Component {
   };
 
   render() {
-    const {emailFocused, modalVisible} = this.state;
+    const { emailFocused, modalVisible } = this.state;
 
     return (
       <SafeAreaView style={styles.screenContainer}>
@@ -181,15 +185,15 @@ export default class ForgotPasswordA extends Component {
         />
 
         <KeyboardAwareScrollView contentContainerStyle={styles.contentContainerStyle}>
-        
-        <View style={{ position: 'absolute', right: 0, margin: hp(3.9), marginTop: hp(3) }}>
-            <Icons onPress={()=>this.props.navigation.navigate('SignIn')} name={Platform.OS === 'android' ? 'md-close' : 'ios-close'} size={hp(4.5)} />
+
+          <View style={{ position: 'absolute', right: 0, margin: hp(3.9), marginTop: hp(3) }}>
+            <Icons onPress={() => this.props.navigation.navigate('SignIn')} name={Platform.OS === 'android' ? 'md-close' : 'ios-close'} size={hp(4.5)} />
           </View>
 
-        <View style={{flex:1,justifyContent: 'center'}}>
-          <View style={styles.instructionContainer}>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={styles.instructionContainer}>
 
-              <View style={{justifyContent: 'center',alignItems: 'center'}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Logo size={60} />
               </View>
 
@@ -199,39 +203,39 @@ export default class ForgotPasswordA extends Component {
                 </Text>
               </View>
               <View>
-                <Text style={{fontSize:hp(3)}}>Forgot your password?</Text>
+                <Text style={{ fontSize: hp(3), fontFamily: FontFamily.SemiBold, color: '#333f4b' }}>Forgot your password?</Text>
               </View>
-            <Paragraph style={styles.instruction}>
+              <Paragraph style={styles.instruction}>
                 Confirm your email & we'll send the
                 instructions
             </Paragraph>
-          </View>
+            </View>
 
-          <View style={styles.inputContainer}>
-            <TextInput
-              onChangeText={this.emailChange}
-              inputFocused={emailFocused}
-              onSubmitEditing={this.resetPassword}
-              returnKeyType="next"
-              blurOnSubmit={false}
-              keyboardType="email-address"
-              style={{width:'92%',alignSelf: 'center',height:50,borderWidth:2,borderRadius:5,paddingLeft:10,fontSize:17}}
-              placeholder="E-mail"
-              placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
-              inputTextColor={INPUT_TEXT_COLOR}
-              borderColor={INPUT_BORDER_COLOR}
-              focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
-            />
-          </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                onChangeText={this.emailChange}
+                inputFocused={emailFocused}
+                onSubmitEditing={this.resetPassword}
+                returnKeyType="next"
+                blurOnSubmit={false}
+                keyboardType="email-address"
+                style={{ width: '92%', alignSelf: 'center', height: 50, borderWidth: 2, borderRadius: 5, paddingLeft: 10, fontSize: 17, fontFamily: FontFamily.Regular }}
+                placeholder="E-mail"
+                placeholderTextColor={PLACEHOLDER_TEXT_COLOR}
+                inputTextColor={INPUT_TEXT_COLOR}
+                borderColor={INPUT_BORDER_COLOR}
+                focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
+              />
+            </View>
 
-          <View style={styles.buttonContainer}>
-            <Button
-              onPress={this.resetPassword}
-              large
-              title={'Reset password'.toUpperCase()}
-            />
+            <View style={styles.buttonContainer}>
+              <Button
+                onPress={this.resetPassword}
+                large
+                title={'Reset password'.toUpperCase()}
+              />
+            </View>
           </View>
-        </View>
 
           <ActivityIndicatorModal
             message="Please wait . . ."

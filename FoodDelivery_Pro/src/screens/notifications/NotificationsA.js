@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#efefef',
+    backgroundColor: '#fff',
   },
   notificationsContainer: {
     //paddingVertical: 8,
@@ -51,7 +51,7 @@ export default class NotificationsA extends Component {
         {
           notificationId: 5,
           type: 'delivered',
-          title: 'YooHoo! Your order is delivered',
+          title: 'YooHoo! Your order is deliveredg',
           text: 'We hope you like it! Please send us your feedback and rate.',
           meta: 'just now',
           readOut: false,
@@ -59,7 +59,7 @@ export default class NotificationsA extends Component {
         {
           notificationId: 0,
           type: 'failed_delivery',
-          title: 'Oops. Failed attempt delivery',
+          title: 'Oops. Failed attempt deliveryg',
           text:
             'You were not available at the time of the first delivery attempt. A second attempt will be made. Please contact us at +1-234-567-8910.',
           meta: '3 mint ago',
@@ -68,7 +68,7 @@ export default class NotificationsA extends Component {
         {
           notificationId: 1,
           type: 'ready_for_delivery',
-          title: 'Your order is out for delivery',
+          title: 'Your order is out for deliveryg',
           text: 'We are at your doorstep. Open it to us.',
           meta: '5 mint ago',
           readOut: false,
@@ -76,7 +76,7 @@ export default class NotificationsA extends Component {
         {
           notificationId: 2,
           type: 'on_the_way',
-          title: 'Your order is on the way',
+          title: 'Your order is on the wayg',
           text:
             'Good news! Your order is arriving today. Expected to be delivered by 6:30 pm.',
           meta: '21 mint ago',
@@ -85,7 +85,7 @@ export default class NotificationsA extends Component {
         {
           notificationId: 3,
           type: 'exception',
-          title: 'Delivery exception',
+          title: 'Delivery exceptiong',
           text:
             'Your order encounters a delivery exception. Please contact us at +1-234-567-8910.',
           meta: '1 day ago',
@@ -104,17 +104,17 @@ export default class NotificationsA extends Component {
   }
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
   navigateTo = screen => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   swipeoutOnPressRemove = item => () => {
-    let {notifications} = this.state;
+    let { notifications } = this.state;
     const index = notifications.indexOf(item);
 
     notifications = remove(
@@ -129,7 +129,7 @@ export default class NotificationsA extends Component {
 
   keyExtractor = item => item.notificationId.toString();
 
-  renderItem = ({item, index}) => (
+  renderItem = ({ item, index }) => (
     <NotificationItem
       activeOpacity={0.85}
       type={item.type}
@@ -143,7 +143,7 @@ export default class NotificationsA extends Component {
   );
 
   render() {
-    const {notifications} = this.state;
+    const { notifications } = this.state;
 
     return (
       <SafeAreaView style={styles.screenContainer}>
@@ -161,13 +161,13 @@ export default class NotificationsA extends Component {
               message="Stay tuned! Notifications about your orders will show up here"
             />
           ) : (
-            <FlatList
-              data={notifications}
-              renderItem={this.renderItem}
-              keyExtractor={this.keyExtractor}
-              contentContainerStyle={styles.notificationsContainer}
-            />
-          )}
+              <FlatList
+                data={notifications}
+                renderItem={this.renderItem}
+                keyExtractor={this.keyExtractor}
+                contentContainerStyle={styles.notificationsContainer}
+              />
+            )}
         </View>
       </SafeAreaView>
     );

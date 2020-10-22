@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   FlatList,
   Platform,
@@ -19,12 +19,14 @@ import ActionButton from 'react-native-action-button';
 
 // import components
 import Icon from '../../components/icon/Icon';
-import {Caption, Subtitle1, Subtitle2} from '../../components/text/CustomText';
+import { Caption, Subtitle1, Subtitle2 } from '../../components/text/CustomText';
 import TouchableItem from '../../components/TouchableItem';
 
 // import colors
 import Colors from '../../theme/colors';
 import Icons from "react-native-vector-icons/Feather";
+import FontFamily from '../../theme/FontFamily';
+
 // DeliveryAddressA Config
 const IOS = Platform.OS === 'ios';
 const RADIO_OFF_ICON = IOS ? 'ios-radio-button-off' : 'md-radio-button-off';
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     color: Colors.orangeLight,
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   radioIconContainer: {
     justifyContent: 'center',
@@ -82,6 +85,14 @@ const styles = StyleSheet.create({
   addressText: {
     paddingVertical: 4,
     textAlign: 'left',
+    color: '#333f4b',
+    fontFamily: FontFamily.Regular
+  },
+  addressText1: {
+    paddingVertical: 4,
+    textAlign: 'left',
+    color: '#89909b',
+    fontFamily: FontFamily.Regular
   },
   editIconContainer: {
     justifyContent: 'center',
@@ -116,48 +127,48 @@ const Address = ({
   number,
   active,
 }: Props) => (
-  <TouchableItem onPress={onPress} useForeground style={{borderBottomWidth:0.5,borderColor: '#89909b'}}>
-    <View style={styles.addressCard}>
-      <View style={styles.leftAddresContainer}>
-        <View style={styles.radioIconContainer}>
-          {active ? (
-            <Icon
-              name={RADIO_ON_ICON}
-              size={21}
-              color={Colors.orangeLight}
-            />
-          ) : (
-            <Icon
-              name={RADIO_OFF_ICON}
-              size={21}
-              color={Colors.orangeLight}
-            />
-          )}
-        </View>
-
-        <View style={styles.addressInfo}>
-          {type !== '' && (
-            <Caption style={styles.caption}>
-              {`${type.toUpperCase()} ADDRESS`}
-            </Caption>
-          )}
-          <Subtitle1 style={styles.addressText}>
-            {`${number} ${street}, ${district}`}
-          </Subtitle1>
-          <Subtitle2 style={styles.addressText}>{`${city} ${zip}`}</Subtitle2>
-        </View>
-      </View>
-
-      <View style={{height: 50}}>
-        <TouchableItem onPress={onPressEdit} borderless>
-          <View style={styles.editIconContainer}>
-            <Icons name={'more-horizontal'} size={24} color={Colors.black} />
+    <TouchableItem onPress={onPress} useForeground style={{ borderBottomWidth: 0.5, borderColor: '#89909b' }}>
+      <View style={styles.addressCard}>
+        <View style={styles.leftAddresContainer}>
+          <View style={styles.radioIconContainer}>
+            {active ? (
+              <Icon
+                name={RADIO_ON_ICON}
+                size={21}
+                color={Colors.orangeLight}
+              />
+            ) : (
+                <Icon
+                  name={RADIO_OFF_ICON}
+                  size={21}
+                  color={Colors.orangeLight}
+                />
+              )}
           </View>
-        </TouchableItem>
+
+          <View style={styles.addressInfo}>
+            {type !== '' && (
+              <Caption style={styles.caption}>
+                {`${type.toUpperCase()} ADDRESS`}
+              </Caption>
+            )}
+            <Subtitle1 style={styles.addressText}>
+              {`${number} ${street}, ${district}`}
+            </Subtitle1>
+            <Subtitle2 style={styles.addressText1}>{`${city} ${zip}`}</Subtitle2>
+          </View>
+        </View>
+
+        <View style={{ height: 50 }}>
+          <TouchableItem onPress={onPressEdit} borderless>
+            <View style={styles.editIconContainer}>
+              <Icons name={'more-horizontal'} size={24} color={Colors.black} />
+            </View>
+          </TouchableItem>
+        </View>
       </View>
-    </View>
-  </TouchableItem>
-);
+    </TouchableItem>
+  );
 
 // DeliveryAddressA
 export default class DeliveryAddressA extends Component {
@@ -200,17 +211,17 @@ export default class DeliveryAddressA extends Component {
   }
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
   navigateTo = screen => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
   setDeliveryAddress = item => () => {
-    const {addresses} = this.state;
+    const { addresses } = this.state;
     const index = addresses.indexOf(item);
     const activeIndex = addresses.findIndex(e => e.active === true);
 
@@ -226,7 +237,7 @@ export default class DeliveryAddressA extends Component {
 
   keyExtractor = (item, index) => index.toString();
 
-  renderAddressItem = ({item}) => (
+  renderAddressItem = ({ item }) => (
     <Address
       key={item.id}
       onPress={this.setDeliveryAddress(item)}
@@ -251,7 +262,7 @@ export default class DeliveryAddressA extends Component {
   );
 
   render() {
-    const {addresses} = this.state;
+    const { addresses } = this.state;
 
     return (
       <SafeAreaView style={styles.screenContainer}>
@@ -281,7 +292,9 @@ export default class DeliveryAddressA extends Component {
               buttonColor={Colors.addNewAddressColor}
               textContainerStyle={{
                 backgroundColor: 'rgba(35, 47, 52, 0.1)',
+              
               }}
+              textStyle={{fontFamily:FontFamily.Regular}}
               title="Add new address"
               onPress={this.navigateTo('AddAddress')}>
               <Icon name={HOME_ICON} size={22} color={Colors.onPrimaryColor} />
@@ -291,8 +304,9 @@ export default class DeliveryAddressA extends Component {
               textContainerStyle={{
                 backgroundColor: 'rgba(35, 47, 52, 0.1)',
               }}
-              title="Use current location"
-              onPress={() => {}}>
+              textStyle={{fontFamily:FontFamily.Regular}}
+              title="Use current locationg"
+              onPress={() => { }}>
               <Icon
                 name={LOCATION_ICON}
                 size={22}

@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -16,7 +16,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PhoneInput from 'react-native-phone-input';
 // import components
 import Button from '../../components/buttons/Button';
@@ -28,6 +28,8 @@ import Colors from '../../theme/colors';
 import Icons from 'react-native-vector-icons/Ionicons';
 import Layout from '../../theme/layout';
 import Logo from '../../components/logo/Logo';
+import FontFamily from '../../theme/FontFamily';
+
 console.disableYellowBox = true;
 
 // SignUpA Config
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Layout.LARGE_PADDING,
     marginTop: hp(4),
   },
-  inputContainer: {marginBottom: 7},
+  inputContainer: { marginBottom: 7 },
   vSpacer: {
     height: 15,
   },
@@ -107,15 +109,18 @@ const styles = StyleSheet.create({
   },
   companyName: {
     fontSize: hp(4.5),
-    fontWeight: '700',
+    //fontWeight: '700',
     justifyContent: 'center',
     alignSelf: 'center',
     marginTop: 10,
+    color: '#333f4b',
+    fontFamily: FontFamily.Bold
   },
   signup: {
     fontSize: hp(2.8),
     color: Colors.orange,
     marginLeft: 5,
+    fontFamily: FontFamily.Regular
   },
 });
 
@@ -180,14 +185,14 @@ export default class SignUpA extends Component {
   };
 
   onTogglePress = () => {
-    const {secureTextEntry} = this.state;
+    const { secureTextEntry } = this.state;
     this.setState({
       secureTextEntry: !secureTextEntry,
     });
   };
 
   navigateTo = (screen) => () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
@@ -201,7 +206,7 @@ export default class SignUpA extends Component {
       },
       // this.navigateTo('HomeNavigator'),
 
-      this.props.navigation.navigate('Verification',{mobileno:this.state.phonenumber}),
+      this.props.navigation.navigate('Verification', { mobileno: this.state.phonenumber }),
     );
   };
 
@@ -215,7 +220,7 @@ export default class SignUpA extends Component {
   };
   selectCountry = (country) => {
     const countrycode = this.phone.getCountryCode(country);
-    this.setState({countrycode: countrycode});
+    this.setState({ countrycode: countrycode });
     console.log(this.state.countrycode);
     this.phone.selectCountry(country.iso2);
   };
@@ -260,7 +265,7 @@ export default class SignUpA extends Component {
           <View style={styles.content}>
             <View />
 
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
               <Logo size={50} />
             </View>
 
@@ -274,7 +279,7 @@ export default class SignUpA extends Component {
                 alignItems: 'center',
                 marginTop: hp(0.5),
               }}>
-              <Text style={{fontSize: hp(2.8)}}>Already a user ?</Text>
+              <Text style={{ fontSize: hp(2.8), fontFamily: FontFamily.Regular, color: Colors.primaryText }}>Already a user ?</Text>
               <Text style={styles.signup} onPress={this.navigateTo('SignIn')}>
                 Login
               </Text>
@@ -291,6 +296,7 @@ export default class SignUpA extends Component {
                   paddingLeft: 10,
                   borderColor: 'red',
                   fontSize: hp(2.5),
+                  fontFamily:FontFamily.Regular
                 }}
                 onChangeText={this.emailChange}
                 onFocus={this.emailFocus}
@@ -317,6 +323,7 @@ export default class SignUpA extends Component {
                   paddingLeft: 10,
                   marginTop: hp(3),
                   fontSize: hp(2.5),
+                  fontFamily:FontFamily.Regular
                 }}
                 onChangeText={this.phoneChange}
                 onFocus={this.phoneFocus}
@@ -343,6 +350,7 @@ export default class SignUpA extends Component {
                   paddingLeft: 10,
                   marginTop: hp(3),
                   fontSize: hp(2.5),
+                  fontFamily:FontFamily.Regular
                 }}
                 onChangeText={this.passwordChange}
                 onFocus={this.passwordFocus}
@@ -376,6 +384,7 @@ export default class SignUpA extends Component {
                   fontSize: hp(2.5),
                   borderColor: INPUT_BORDER_COLOR,
                   height: hp(7.5),
+                  fontFamily:FontFamily.Regular
                 }}
                 returnKeyType="done"
                 placeholder="Phone Number"

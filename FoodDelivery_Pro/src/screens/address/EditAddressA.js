@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Keyboard,
   SafeAreaView,
@@ -17,17 +17,19 @@ import {
 } from 'react-native';
 import Color from 'color';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icons from "react-native-vector-icons/FontAwesome5";
 // import components
 import ActivityIndicatorModal from '../../components/modals/ActivityIndicatorModal';
 import Button from '../../components/buttons/Button';
-import {Caption, Paragraph} from '../../components/text/CustomText';
+import { Caption, Paragraph } from '../../components/text/CustomText';
 import TouchableItem from '../../components/TouchableItem';
 import UnderlineTextInput from '../../components/textinputs/UnderlineTextInput';
 import Iconss from "react-native-vector-icons/FontAwesome";
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
+
 
 // EditAddressA Config
 const HOME_ICON = 'home';
@@ -80,6 +82,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     fontSize: 14,
     textAlign: 'center',
+    fontFamily: FontFamily.SemiBold,
+    color: Color(Colors.secondaryText).alpha(0.6),
   },
   form: {
     padding: 12,
@@ -157,7 +161,7 @@ export default class EditAddressA extends Component {
   };
 
   goBack = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.goBack();
   };
 
@@ -377,7 +381,7 @@ export default class EditAddressA extends Component {
                 inputTextColor={INPUT_TEXT_COLOR}
                 borderColor={INPUT_BORDER_COLOR}
                 focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
-                style={{borderBottomWidth:0.2,borderColor: '#89909b',}}
+                style={{ borderBottomWidth: 0.2, borderColor: '#89909b', fontFamily: FontFamily.Regular }}
               />
             </View>
 
@@ -398,7 +402,7 @@ export default class EditAddressA extends Component {
                 inputTextColor={INPUT_TEXT_COLOR}
                 borderColor={INPUT_BORDER_COLOR}
                 focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
-                style={{borderBottomWidth:0.2,borderColor: '#89909b',}}
+                style={{ borderBottomWidth: 0.2, borderColor: '#89909b', fontFamily: FontFamily.Regular }}
 
               />
             </View>
@@ -420,7 +424,7 @@ export default class EditAddressA extends Component {
                 value={district}
                 borderColor={INPUT_BORDER_COLOR}
                 focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
-                style={{borderBottomWidth:0.2,borderColor: '#89909b',}}
+                style={{ borderBottomWidth: 0.2, borderColor: '#89909b', fontFamily: FontFamily.Regular }}
 
               />
             </View>
@@ -443,6 +447,8 @@ export default class EditAddressA extends Component {
                   inputTextColor={INPUT_TEXT_COLOR}
                   borderColor={INPUT_BORDER_COLOR}
                   focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
+                  style={{ borderBottomWidth: 0.2, borderColor: '#89909b', fontFamily: FontFamily.Regular }}
+
                 />
               </View>
 
@@ -463,6 +469,8 @@ export default class EditAddressA extends Component {
                   inputTextColor={INPUT_TEXT_COLOR}
                   borderColor={INPUT_BORDER_COLOR}
                   focusedBorderColor={INPUT_FOCUSED_BORDER_COLOR}
+                  style={{ borderBottomWidth: 0.2, borderColor: '#89909b', fontFamily: FontFamily.Regular }}
+
                 />
               </View>
             </View>

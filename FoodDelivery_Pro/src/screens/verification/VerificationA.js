@@ -6,7 +6,7 @@
  */
 
 // import dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Alert,
   I18nManager,
@@ -18,15 +18,17 @@ import {
 } from 'react-native';
 import Color from 'color';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 // import components
 import ActivityIndicatorModal from '../../components/modals/ActivityIndicatorModal';
 import Button from '../../components/buttons/Button';
-import {Heading5, Paragraph} from '../../components/text/CustomText';
+import { Heading5, Paragraph } from '../../components/text/CustomText';
 // import colors
 import Colors from '../../theme/colors';
-import {TextInput} from 'react-native-gesture-handler';
+import { TextInput } from 'react-native-gesture-handler';
+import FontFamily from '../../theme/FontFamily';
+
 
 // VerificationA Config
 const isRTL = I18nManager.isRTL;
@@ -101,7 +103,7 @@ export default class VerificationA extends Component {
   };
 
   navigateTo = (screen) => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate(screen);
   };
 
@@ -129,11 +131,11 @@ export default class VerificationA extends Component {
   };
 
   render() {
-    const {modalVisible, code} = this.state;
+    const { modalVisible, code } = this.state;
     // const mobileno = this.props.navigation.getParam('mobileno', 'NO-User');
 
     return (
-      <SafeAreaView forceInset={{top: 'never'}} style={styles.screenContainer}>
+      <SafeAreaView forceInset={{ top: 'never' }} style={styles.screenContainer}>
         <StatusBar
           backgroundColor={Colors.statusBarColor}
           barStyle="dark-content"
@@ -146,10 +148,10 @@ export default class VerificationA extends Component {
               Please, enter the verification code sent to +1234567890
             </Paragraph>
             <OTPInputView
-              style={{width: '60%', height: 130, backgroundColor: 'white'}}
+              style={{ width: '60%', height: 130, backgroundColor: 'white' }}
               pinCount={4}
               onCodeChanged={(code) => {
-                this.setState({code});
+                this.setState({ code });
               }}
               codeInputFieldStyle={styles.underlineStyleBase}
               codeInputHighlightStyle={styles.underlineStyleHighLighted}

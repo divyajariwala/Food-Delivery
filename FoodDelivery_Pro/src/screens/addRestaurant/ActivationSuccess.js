@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import TouchableItem from '../../components/TouchableItem';
 import Colors from '../../theme/colors';
 import Icons from 'react-native-vector-icons/Ionicons';
-import {StackActions} from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import FontFamily from '../../theme/FontFamily';
 
 export default class ActivationSuccess extends Component {
   constructor(props) {
@@ -43,13 +44,13 @@ export default class ActivationSuccess extends Component {
           />
         </View>
 
-        <Text style={{fontSize: hp(3.6), fontWeight: 'bold'}}>
+        <Text style={{ fontSize: hp(3.6), fontFamily: FontFamily.Bold, color: '#333f4b' }}>
           Congratulations!
         </Text>
-        <Text style={{fontSize: hp(3.2), marginTop: '5%'}}>
+        <Text style={{ fontSize: hp(3.2), marginTop: '5%', color: '#333f4b', fontFamily: FontFamily.Regular }}>
           Your account has been activated.
         </Text>
-        <Text style={{fontSize: hp(3.2)}}>
+        <Text style={{ fontSize: hp(3.2), color: '#333f4b', fontFamily: FontFamily.Regular }}>
           Please check your email for details.
         </Text>
         <TouchableItem
@@ -64,9 +65,10 @@ export default class ActivationSuccess extends Component {
           <Text
             style={{
               color: 'white',
-              fontSize: hp(2.8),
+              fontSize: hp(2.5),
               textAlign: 'center',
               letterSpacing: 0.5,
+              fontFamily: FontFamily.SemiBold
             }}>
             Log In to MenuDrive
           </Text>

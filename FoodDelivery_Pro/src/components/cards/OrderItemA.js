@@ -7,27 +7,28 @@
 
 // import dependencies
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Color from 'color';
 
 // import components
 import Button from '../buttons/Button';
-import {Caption, Subtitle1, Subtitle2} from '../text/CustomText';
+import { Caption, Subtitle1, Subtitle2 } from '../text/CustomText';
 import Divider from '../divider/Divider';
 import TouchableItem from '../TouchableItem';
 
 // import colors, layout
 import Colors from '../../theme/colors';
 import Layout from '../../theme/layout';
+import FontFamily from '../../theme/FontFamily';
 
 // OrderItemA Config
 
 // OrderItemA Styles
 const styles = StyleSheet.create({
   container: {
-  // marginTop: 1,
-  //  marginBottom: 7,
-  //   marginHorizontal: 12,
+    // marginTop: 1,
+    //  marginBottom: 7,
+    //   marginHorizontal: 12,
     borderRadius: 4,
     backgroundColor: Colors.background,
   },
@@ -42,9 +43,10 @@ const styles = StyleSheet.create({
   },
   orderNumber: {
     paddingBottom: 2,
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
     color: Colors.orangeLight,
     textAlign: 'left',
+    fontFamily: FontFamily.Regular
   },
   flexEnd: {
     alignItems: 'flex-end',
@@ -78,16 +80,19 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   onTheWay: {
-    color: Colors.tertiaryColor,
+    color: '#f89344',
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold
   },
   pending: {
     color: Colors.cancelButtonColor,
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold
   },
   delivered: {
     color: Colors.primaryColor,
     textAlign: 'left',
+    fontFamily: FontFamily.SemiBold
   },
 });
 
@@ -115,84 +120,84 @@ const OrderItemA = ({
   orderItems,
   orderStatus,
 }: Props) => (
-  <View style={styles.container}>
-    <View style={styles.content}>
-      <View style={styles.header}>
-        <View>
-          <Subtitle2
-            style={styles.orderNumber}>{`ORDER #${orderNumber}`}</Subtitle2>
-          <Caption>{orderDate}</Caption>
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <View style={styles.header}>
+          <View>
+            <Subtitle2
+              style={styles.orderNumber}>{`ORDER #${orderNumber}`}</Subtitle2>
+            <Caption>{orderDate}</Caption>
+          </View>
+          <View style={styles.flexEnd}>
+            <Subtitle1>{`$ ${renderOrderItemsTotal(orderItems)}`}</Subtitle1>
+            <Caption>{`${orderItems.length} items`}</Caption>
+          </View>
         </View>
-        <View style={styles.flexEnd}>
-          <Subtitle1>{`$ ${renderOrderItemsTotal(orderItems)}`}</Subtitle1>
-          <Caption>{`${orderItems.length} items`}</Caption>
+
+        <Divider type="middle" />
+
+        <View style={styles.pv8}>
+          {orderItems.map((item, index) => (
+            <View key={index.toString()} style={styles.itemContainer}>
+              <TouchableItem onPress={onPress} activeOpacity={activeOpacity}>
+                <View style={styles.item}>
+                  <Subtitle2>{item.name}</Subtitle2>
+                  <Subtitle2>{`$ ${item.price}`}</Subtitle2>
+                </View>
+              </TouchableItem>
+            </View>
+          ))}
         </View>
+
+        {orderStatus === 'on-the-way' && (
+          <View style={styles.footer}>
+            <View>
+              <Subtitle2 style={styles.status}>Status</Subtitle2>
+              <Subtitle2 style={styles.onTheWay}>On the way</Subtitle2>
+            </View>
+
+            <Button
+              color={Colors.primaryColor}
+              title="Track"
+              titleColor={Colors.white}
+              buttonStyle={styles.extraSmallButton}
+            />
+          </View>
+        )}
+
+        {orderStatus === 'pending' && (
+          <View style={styles.footer}>
+            <View>
+              <Subtitle2 style={styles.status}>Status</Subtitle2>
+              <Subtitle2 style={styles.pending}>Pending delivery</Subtitle2>
+            </View>
+
+            <Button
+              color={Colors.cancelButtonColor}
+              title="Cancel"
+              titleColor={Colors.white}
+              buttonStyle={styles.extraSmallButton}
+            />
+          </View>
+        )}
+
+        {orderStatus === 'delivered' && (
+          <View style={styles.footer}>
+            <View>
+              <Subtitle2 style={styles.status}>Status</Subtitle2>
+              <Subtitle2 style={styles.delivered}>Delivered</Subtitle2>
+            </View>
+
+            <Button
+              color={Color(Colors.primaryColor).alpha(0.16)}
+              title="Reorder"
+              titleColor={Colors.primaryColor}
+              buttonStyle={styles.extraSmallButton}
+            />
+          </View>
+        )}
       </View>
-
-      <Divider type="middle" />
-
-      <View style={styles.pv8}>
-        {orderItems.map((item, index) => (
-          <View key={index.toString()} style={styles.itemContainer}>
-            <TouchableItem onPress={onPress} activeOpacity={activeOpacity}>
-              <View style={styles.item}>
-                <Subtitle2>{item.name}</Subtitle2>
-                <Subtitle2>{`$ ${item.price}`}</Subtitle2>
-              </View>
-            </TouchableItem>
-          </View>
-        ))}
-      </View>
-
-      {orderStatus === 'on-the-way' && (
-        <View style={styles.footer}>
-          <View>
-            <Subtitle2 style={styles.status}>Status</Subtitle2>
-            <Subtitle2 style={styles.onTheWay}>On the way</Subtitle2>
-          </View>
-
-          <Button
-            color={Colors.primaryColor}
-            title="Track"
-            titleColor={Colors.white}
-            buttonStyle={styles.extraSmallButton}
-          />
-        </View>
-      )}
-
-      {orderStatus === 'pending' && (
-        <View style={styles.footer}>
-          <View>
-            <Subtitle2 style={styles.status}>Status</Subtitle2>
-            <Subtitle2 style={styles.pending}>Pending delivery</Subtitle2>
-          </View>
-
-          <Button
-            color={Colors.cancelButtonColor}
-            title="Cancel"
-            titleColor={Colors.white}
-            buttonStyle={styles.extraSmallButton}
-          />
-        </View>
-      )}
-
-      {orderStatus === 'delivered' && (
-        <View style={styles.footer}>
-          <View>
-            <Subtitle2 style={styles.status}>Status</Subtitle2>
-            <Subtitle2 style={styles.delivered}>Delivered</Subtitle2>
-          </View>
-
-          <Button
-            color={Color(Colors.primaryColor).alpha(0.16)}
-            title="Reorder"
-            titleColor={Colors.primaryColor}
-            buttonStyle={styles.extraSmallButton}
-          />
-        </View>
-      )}
     </View>
-  </View>
-);
+  );
 
 export default OrderItemA;

@@ -8,10 +8,12 @@
 // import dependencies
 import React from 'react';
 import type ReactElement from 'react';
-import {Platform, StyleSheet, Text as RNText} from 'react-native';
+import { Platform, StyleSheet, Text as RNText } from 'react-native';
 
 // import colors
 import Colors from '../../theme/colors';
+import FontFamily from '../../theme/FontFamily';
+import Color from 'color';
 
 // CustomText Config
 const platform = Platform.OS;
@@ -92,16 +94,18 @@ const styles = StyleSheet.create({
   },
   h5: {
     // fontWeight: '400',
-    ...fonts.regular,
+    // ...fonts.regular,
     fontSize: 24,
     color: Colors.primaryText,
+    fontFamily: FontFamily.SemiBold
   },
   h6: {
     // fontWeight: '500',
-    ...fonts.medium,
+    // ...fonts.medium,
     fontSize: 23,
     letterSpacing: 0.15,
     color: Colors.primaryText,
+    fontFamily: FontFamily.SemiBold
   },
   title: {
     // fontWeight: '500',
@@ -112,19 +116,24 @@ const styles = StyleSheet.create({
   },
   subtitle1: {
     // fontWeight: '400',
-    ...fonts.regular,
+    // ...fonts.regular,
     fontSize: 16,
     lineHeight: 20,
     letterSpacing: 0.15,
     color: Colors.primaryText,
+    fontFamily: FontFamily.SemiBold
+
   },
   subtitle2: {
     // fontWeight: '400',
-    ...fonts.regular,
+    //...fonts.regular,
     fontSize: 14,
     lineHeight: 18,
     letterSpacing: 0.1,
-    color: Colors.secondaryText,
+    // color: Colors.secondaryText,
+    fontFamily: FontFamily.Regular,
+    color: Color(Colors.secondaryText)
+      .alpha(0.60),
   },
   text: {
     // fontWeight: '400'
@@ -133,11 +142,12 @@ const styles = StyleSheet.create({
   // body1
   paragraph: {
     // fontWeight: '400',
-    ...fonts.regular,
+    //...fonts.regular,
     fontSize: 16,
     lineHeight: 20,
     letterSpacing: 0.5,
     color: Colors.secondaryText,
+    fontFamily: FontFamily.Regular
   },
   // body 2
   smallText: {
@@ -147,6 +157,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     letterSpacing: 0.25,
     color: Colors.secondaryText,
+    fontFamily: FontFamily.SemiBold
   },
   buttonText: {
     // fontWeight: '500',
@@ -157,66 +168,69 @@ const styles = StyleSheet.create({
   },
   caption: {
     // fontWeight: '400',
-    ...fonts.regular,
+    // ...fonts.regular,
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0.4,
-    color: Colors.secondaryText,
+    color: Color(Colors.secondaryText)
+      .alpha(0.60),
+
+    fontFamily: FontFamily.Regular
   },
 });
 
-export const Heading1 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Heading1 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.h1, style]} {...props} />
 );
 
-export const Heading2 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Heading2 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.h2, style]} {...props} />
 );
 
-export const Heading3 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Heading3 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.h3, style]} {...props} />
 );
 
-export const Heading4 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Heading4 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.h4, style]} {...props} />
 );
 
-export const Heading5 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Heading5 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.h5, style]} {...props} />
 );
 
-export const Heading6 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Heading6 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.h6, style]} {...props} />
 );
 
-export const Title = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Title = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.title, style]} {...props} />
 );
 
-export const Subtitle1 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Subtitle1 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.subtitle1, style]} {...props} />
 );
 
-export const Subtitle2 = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Subtitle2 = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.subtitle2, style]} {...props} />
 );
 
-export const Text = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Text = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.text, style]} {...props} />
 );
 
-export const Paragraph = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Paragraph = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.paragraph, style]} {...props} />
 );
 
-export const SmallText = ({style, ...props}: Object): ReactElement<RNText> => (
+export const SmallText = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.smallText, style]} {...props} />
 );
 
-export const ButtonText = ({style, ...props}: Object): ReactElement<RNText> => (
+export const ButtonText = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.buttonText, style]} {...props} />
 );
 
-export const Caption = ({style, ...props}: Object): ReactElement<RNText> => (
+export const Caption = ({ style, ...props }: Object): ReactElement<RNText> => (
   <RNText style={[styles.caption, style]} {...props} />
 );
